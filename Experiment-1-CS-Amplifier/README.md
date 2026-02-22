@@ -392,7 +392,7 @@ Channel length modulation is neglected in first-order theoretical analysis.
 
 ---
 
-### Inference
+## Inference
 
 The Common Source (CS) amplifier was successfully designed using NMOS in 180nm technology while satisfying the given constraints:
 
