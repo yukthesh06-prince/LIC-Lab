@@ -219,7 +219,7 @@ $$
 W = 3.24\mu m
 $$
 
-However, after running the simulation, the drain current was slightly lower than the intended 400µA. This happens because practical transistor models include second-order effects that slightly alter the expected current.
+However, after running the simulation, the drain current was slightly lower than the intended 200µA. This happens because practical transistor models include second-order effects that slightly alter the expected current.
 
 To correct this and achieve the desired operating current, I increased the width to:
 
@@ -237,21 +237,14 @@ After this adjustment, the operating point matched the design target.
 
 ![Transient Analysis](Results/transient.png)
 
-###Simulated Gain
+### Simulated Gain
 
 Input signal parameters:
 
-$$
-f = 1 \text{ kHz}
-$$
-
-$$
-\text{Amplitude} = 10 \text{ mV}
-$$
-
-$$
-\text{DC Offset} = 0.9V
-$$
+- Type: Sine wave  
+- Frequency = 1kHz  
+- Amplitude = 10mV  
+- DC Offset = 0.9V  
 
 Measured peak-to-peak values:
 
