@@ -46,7 +46,7 @@ This results in 180° phase shift between input and output.
 
 The small signal voltage gain is given by:
 
-Av = − gm × R_{D}
+Av = − gm × $R_{D}
 
 ---
 
@@ -161,7 +161,7 @@ DC Operating Point :
 
 ![Imabe](Results/values.png)
 
-### 3.3 Drain Resistance (R_{D})
+### 3.3 Drain Resistance ($R_{D})
 
 The output voltage expression is:
 
