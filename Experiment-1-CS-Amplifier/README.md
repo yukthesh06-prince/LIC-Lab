@@ -326,18 +326,71 @@ $$
 
 ![AC Analysis](Results/ac.png)
 
-Dominant pole frequency:
+In AC analysis, the frequency response of the Common Source amplifier is observed.
 
-fp = 1 / (2π RD CL)  
+The midband gain is obtained from the flat region of the Bode plot.  
+The bandwidth is defined as the frequency range between the lower cutoff frequency ($f_L$) and upper cutoff frequency ($f_H$), measured at the −3 dB points.
 
-fp = 1 / (2π × 4.5k × 10pF)  
+---
 
-fp ≈ 3.53 MHz  
+### Midband Gain
 
-Simulated high frequency cutoff:
-fH ≈ 3.67 MHz  
+From AC simulation:
 
-Bandwidth ≈ 3.67 MHz  
+$$
+A_v = 11.44 \text{ dB}
+$$
+
+The −3 dB gain is:
+
+$$
+A_v - 3 = 11.44 - 3
+$$
+
+$$
+A_v - 3 = 8.44 \text{ dB}
+$$
+
+---
+
+### Cutoff Frequencies
+
+Lower cutoff frequency:
+
+$$
+f_L = 0
+$$
+
+Upper cutoff frequency:
+
+$$
+f_H = 3.672 \text{ MHz}
+$$
+
+---
+
+### Bandwidth Calculation
+
+Bandwidth is defined as:
+
+$$
+BW = f_H - f_L
+$$
+
+$$
+BW = 3.672 - 0
+$$
+
+$$
+BW = 3.672 \text{ MHz}
+$$
+
+---
+
+### Conclusion from AC Analysis
+
+The amplifier exhibits a midband gain of 11.44 dB and a bandwidth of 3.672 MHz.  
+The high-frequency roll-off is mainly due to the load capacitance ($C_L$), which introduces a dominant pole at the output node. 
 
 ---
 
