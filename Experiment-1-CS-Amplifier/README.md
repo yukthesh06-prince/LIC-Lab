@@ -201,26 +201,33 @@ $$
 
 ### 3.4 Width Calculation (W)
 
-Drain current equation in saturation:
+The drain current in saturation is given by:
 
-ID = (µn Cox / 2) × (W/L) × (VOV)²  
+$$
+I_D = \frac{1}{2} \mu_n C_{ox} \frac{W}{L} (V_{GS} - V_T)^2
+$$
 
-From technology library:
+Rearranging for width:
 
-µnCox = 2.365 × 10⁻⁴  
+$$
+W = \frac{2 I_D L}{\mu_n C_{ox} (V_{GS} - V_T)^2}
+$$
 
-Substituting values:
+Initially, the calculated width came out to be approximately:
 
-200 × 10⁻⁶ = (2.365 × 10⁻⁴ / 2) × (W / 560 × 10⁻⁹) × (0.54)²  
+$$
+W = 3.24\mu m
+$$
 
-Solving:
+However, after running the simulation, the drain current was slightly lower than the intended 400µA. This happens because practical transistor models include second-order effects that slightly alter the expected current.
 
-W ≈ 3.24 µm  
+To correct this and achieve the desired operating current, I increased the width to:
 
-After simulation tuning to match ID = 200µA:
+$$
+W = 4.09\mu m
+$$
 
-Final W = 4.09 µm  
-
+After this adjustment, the operating point matched the design target.
 ---
 
 ### 3.5 Simulated & Theoretical Voltage Gain
