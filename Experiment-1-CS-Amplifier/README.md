@@ -69,22 +69,33 @@ Av = − gm × RD
 
 ### 3.1 Power Constraint
 
-Given:
-VDD = 1.8V  
-P ≤ 1mW  
+The total power consumed by the circuit is given by:
 
-Power:
-P = VDD × ID  
+$$
+P = V_{DD} I_D
+$$
 
-1.8 × ID ≤ 1 × 10⁻³  
+Since the maximum allowed power is 1mW,
 
-ID ≤ 555.5 µA  
+$$
+I_D \le \frac{1 \times 10^{-3}}{1.8}
+$$
 
-For safe operation, choose:
-ID = 200 µA  
+$$
+I_D \le 555.5\mu A
+$$
+
+To stay safely within this limit and also maintain reasonable gain, I assumed:
+
+$$
+I_D = 200\mu A
+$$  
 
 Power dissipated:
-P = 1.8 × 200µA = 0.36mW  
+
+$$
+P = 1.8 × 200µA = 0.36mW
+$$
 
 Since 0.36mW < 1mW, power constraint is satisfied.
 
