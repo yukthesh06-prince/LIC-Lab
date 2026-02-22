@@ -351,8 +351,6 @@ $$
 A_v - 3 = 8.44 \text{ dB}
 $$
 
----
-
 ### Cutoff Frequencies
 
 Lower cutoff frequency:
@@ -366,8 +364,6 @@ Upper cutoff frequency:
 $$
 f_H = 3.672 \text{ MHz}
 $$
-
----
 
 ### Bandwidth Calculation
 
@@ -384,8 +380,6 @@ $$
 $$
 BW = 3.672 \text{ MHz}
 $$
-
----
 
 ### Conclusion from AC Analysis
 
