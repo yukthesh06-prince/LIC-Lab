@@ -155,6 +155,14 @@ $$
 V_{OV} = 0.54V
 $$
 
+And because:
+
+$$
+V_{DS} = 0.9V > 0.534V
+$$
+
+the transistor clearly satisfies the saturation condition. This confirms that the device is operating in the correct region required for amplification.
+
 ---
 
 ## DC Analysis
@@ -190,45 +198,8 @@ R_D = 4.5k\Omega
 $$  
 
 ---
-### 3.4 Ensuring Saturation Condition
 
-For an NMOS transistor to operate in saturation:
-
-$$
-V_{DS} \ge V_{GS} - V_T
-$$
-
-Hence:
-
-$$
-V_{GS} = V_{G} - V_{S}
-$$
-
-$$
-V_{GS} = 0.9 - 0
-$$
-
-$$
-V_{GS} = 0.9
-$$
-
-Since:
-
-$$
-V_{GS} - V_T = 0.9 - 0.366 = 0.534V
-$$
-
-And because:
-
-$$
-V_{DS} = 0.9V > 0.534V
-$$
-
-the transistor clearly satisfies the saturation condition. This confirms that the device is operating in the correct region required for amplification.
-
----
-
-### 3.5 Width Calculation (W)
+### 3.4 Width Calculation (W)
 
 Drain current equation in saturation:
 
@@ -252,7 +223,7 @@ Final W = 4.09 µm
 
 ---
 
-### 3.6 Simulated & Theoretical Voltage Gain
+### 3.5 Simulated & Theoretical Voltage Gain
 
 ### Transient Analysis
 
@@ -277,7 +248,7 @@ Av(dB) ≈ 10.45 dB
 
 ---
 
-### 3.7 Bandwidth Estimation
+### 3.6 Bandwidth Estimation
 
 ### AC Analysis
 
