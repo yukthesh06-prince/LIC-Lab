@@ -63,9 +63,9 @@ Av = − gm × RD
 - Power constraint ≤ 1mW
 - Channel length, $L_n = 560nm$
 - Threshold voltage, $V_T ≈ 0.366V$
-- Electron mobility, $\mu_n = 273.81 \times 10^{-4} \m^2/Vs$
+- Electron mobility, $\mu_n = 273.81 \times 10^{-4} \ m^2/Vs$
 - Load capacitor, $C_L = 10pF$
-- Gate oxide thickness, $t_ox = 4.1 \times 10^{-9} \m$
+- Gate oxide thickness, $t_ox = 4.1 \times 10^{-9} \ m$
 
 ### 3.1 Power Constraint
 
