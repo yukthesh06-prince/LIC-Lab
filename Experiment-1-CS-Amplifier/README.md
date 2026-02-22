@@ -103,6 +103,10 @@ VOV = 0.54V
 
 ![DC Analysis](Results/dc.png)
 
+DC Operating Point :
+
+![Imabe](Results/values.png)
+
 ### 3.3 Drain Resistance (RD)
 
 Vout = VDD − ID RD  
