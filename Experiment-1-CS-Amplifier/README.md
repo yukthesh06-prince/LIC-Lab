@@ -198,10 +198,18 @@ $$
 V_{DS} \ge V_{GS} - V_T
 $$
 
-I selected:
+Hence:
 
 $$
-V_{GS} = 0.9V
+V_{GS} = V_{G} - V_{S}
+$$
+
+$$
+V_{GS} = 0.9 - 0
+$$
+
+$$
+V_{GS} = 0.9
 $$
 
 Since:
