@@ -165,7 +165,7 @@ DC Operating Point :
 
 ![Imabe](Results/values.png)
 
-### 3.3 Drain Resistance ($R_{D})
+### 3.3 Drain Resistance ($$R_{D}$$)
 
 The output voltage expression is:
 
