@@ -46,7 +46,7 @@ This results in 180° phase shift between input and output.
 
 The small signal voltage gain is given by:
 
-Av = − gm × RD
+Av = − gm × R_{D}
 
 ---
 
@@ -161,14 +161,29 @@ DC Operating Point :
 
 ![Imabe](Results/values.png)
 
-### 3.3 Drain Resistance (RD)
+### 3.3 Drain Resistance (R_{D})
 
-Vout = VDD − ID RD  
+The output voltage expression is:
 
-RD = (VDD − Vout) / ID  
+$$
+V_{out} = V_{DD} - I_D R_D
+$$
 
-RD = (1.8 − 0.9) / 200µA  
-RD = 4.5kΩ  
+Rearranging to find drain resistance:
+
+$$
+R_D = \frac{V_{DD} - V_{out}}{I_D}
+$$
+
+Substituting values:
+
+$$
+R_D = \frac{1.8 - 0.9}{200 \mu A}
+$$
+
+$$
+R_D = 4.5k\Omega
+$$  
 
 ---
 
