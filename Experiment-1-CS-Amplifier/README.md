@@ -228,6 +228,7 @@ W = 4.09\mu m
 $$
 
 After this adjustment, the operating point matched the design target.
+
 ---
 
 ### 3.5 Simulated & Theoretical Voltage Gain
