@@ -237,6 +237,8 @@ After this adjustment, the operating point matched the design target.
 
 ![Transient Analysis](Results/transient.png)
 
+The transient waveform clearly shows that the output signal is amplified compared to the input signal. It can also be observed that the output is 180 degrees out of phase with the input, which confirms the expected behavior of a Common Source amplifier.
+
 ### Simulated Gain
 
 Input signal parameters:
