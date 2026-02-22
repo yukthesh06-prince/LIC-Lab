@@ -165,9 +165,7 @@ Av(dB) ≈ 10.45 dB
 
 ### 3.6 Bandwidth Estimation
 
----
-
-## AC Analysis
+### AC Analysis
 
 ![AC Analysis](Results/ac.png)
 
