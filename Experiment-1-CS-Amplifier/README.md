@@ -392,6 +392,17 @@ Channel length modulation is neglected in first-order theoretical analysis.
 
 ---
 
+### Comparison of Results
+
+| Parameter | Theoretical | Simulated |
+|-----------|-------------|-----------|
+| Voltage Gain (Av) | 3.33 V/V | 3.36 V/V |
+| Gain (dB) | 10.45 dB | 10.54 dB |
+| Bandwidth | 3.53 MHz | 3.67 MHz |
+| Power | 0.36 mW | 0.36 mW |
+
+---
+
 ## Inference
 
 The Common Source (CS) amplifier was successfully designed using NMOS in 180nm technology while satisfying the given constraints:
