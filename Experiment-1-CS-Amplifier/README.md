@@ -76,6 +76,10 @@ Since 0.36mW < 1mW, power constraint is satisfied.
 
 ---
 
+## DC Analysis
+
+![DC Analysis](Results/dc.png)
+
 ### 3.2 Bias Point Selection
 
 For maximum symmetrical output swing:
