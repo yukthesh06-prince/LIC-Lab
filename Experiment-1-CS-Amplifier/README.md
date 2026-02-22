@@ -1,8 +1,7 @@
 # Experiment 1
 ## DC, AC and Transient Analysis of Common Source Amplifier
 
----
-# AIM
+### AIM
 
 To design a Common Source (CS) amplifier using an NMOS transistor in 180nm TSMC technology in LTSpice with a supply voltage of 1.8V and power constraint less than or equal to 1mW, and to analyze its DC operating point, transient response, voltage gain, bandwidth, and unity gain frequency.
 
