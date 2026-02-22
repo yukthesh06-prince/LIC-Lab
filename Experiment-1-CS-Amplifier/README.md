@@ -142,7 +142,11 @@ Final W = 4.09 µm
 
 ---
 
-### 3.5 Theoretical Voltage Gain
+### 3.5 Simulated & Theoretical Voltage Gain
+
+### Transient Analysis
+
+![Transient Analysis](Results/transient.png)
 
 gm = 2ID / VOV  
 
