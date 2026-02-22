@@ -30,7 +30,9 @@ For amplification, the MOSFET must operate in the saturation region.
 
 Condition for saturation:
 
-VDS ≥ VGS − VT
+$$
+V_{DS} ≥ V_{GS} − V_{T}
+$$
 
 When a small AC signal is applied at the gate:
 
@@ -46,7 +48,9 @@ This results in 180° phase shift between input and output.
 
 The small signal voltage gain is given by:
 
-Av = − gm × $R_{D}
+$$
+A_v = - g_m R_D
+$$
 
 ---
 
