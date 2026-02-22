@@ -105,22 +105,51 @@ Since 0.36mW < 1mW, power constraint is satisfied.
 
 For maximum symmetrical output swing:
 
-VDS ≈ VDD / 2  
-VDS = 0.9V  
+$$
+V_{DS} \approx \frac{V_{DD}}{2}
+$$
 
-Since source is grounded:
+$$
+V_{DS} = \frac{1.8}{2}
+$$
 
-VGS = VG − VS  
-VGS = 0.9 − 0  
-VGS = 0.9V  
+$$
+V_{DS} = 0.9V
+$$
 
-Threshold voltage (from library):
-VT = 0.36V  
+Since the source terminal is grounded:
 
-Overdrive voltage:
-VOV = VGS − VT  
-VOV = 0.9 − 0.36  
-VOV = 0.54V  
+$$
+V_{GS} = V_G - V_S
+$$
+
+$$
+V_{GS} = 0.9 - 0
+$$
+
+$$
+V_{GS} = 0.9V
+$$
+
+From the technology library:
+
+$$
+V_T = 0.36V
+$$
+
+Overdrive voltage is given by:
+
+$$
+V_{OV} = V_{GS} - V_T
+$$
+
+$$
+V_{OV} = 0.9 - 0.36
+$$
+
+$$
+V_{OV} = 0.54V
+$$
 
 ---
 
