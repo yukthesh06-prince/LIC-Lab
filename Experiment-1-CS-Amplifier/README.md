@@ -391,3 +391,26 @@ The high-frequency roll-off is mainly due to the load capacitance ($C_L$), which
 ### Note
 
 Channel length modulation is neglected in first-order theoretical analysis.
+
+### Inference
+
+The Common Source (CS) amplifier was successfully designed using NMOS in 180nm technology while satisfying the given constraints:
+
+- Power consumption ≤ 1mW
+- VDD = 1.8V
+- CL = 10pF
+
+The chosen drain current of 200µA ensured that the power dissipation remained within limits (0.36mW).  
+The bias point was selected at VDS ≈ VDD/2 to obtain maximum symmetrical output swing.
+
+Theoretical and simulated results are in close agreement:
+
+- Theoretical gain ≈ 3.33 V/V (10.45 dB)
+- Simulated gain ≈ 3.36 V/V (10.54 dB)
+- Simulated bandwidth ≈ 3.67 MHz
+
+The small difference between theoretical and simulated values is due to non-ideal effects such as channel length modulation and parasitic capacitances present in practical MOSFET models.
+
+From the AC analysis, it is observed that the load capacitance introduces a dominant pole at the output, limiting the high-frequency response of the amplifier.
+
+Hence, the CS amplifier design meets the required specifications and demonstrates proper biasing, gain performance, and bandwidth characteristics.
