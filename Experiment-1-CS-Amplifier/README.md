@@ -3,11 +3,11 @@
 
 ### AIM
 
-To design a Common Source (CS) amplifier using an NMOS transistor in 180nm TSMC technology in LTSpice with a supply voltage of 1.8V and power constraint less than or equal to 1mW, and to analyze its DC operating point, transient response, voltage gain, bandwidth, and unity gain frequency.
+To design a Common Source (CS) amplifier using an NMOS transistor in 180nm TSMC technology in LTSpice with a supply voltage of 1.8V and power constraint less than or equal to 1mW, and to analyze its DC operating point, transient response, voltage gain, and bandwidth.
 
 ## 1. Introduction
 
-### What is a Common Source Amplifier?
+## What is a Common Source Amplifier?
 
 A Common Source (CS) amplifier is a single-stage MOSFET amplifier configuration in which the source terminal is common to both input and output. 
 
@@ -50,13 +50,22 @@ Av = − gm × RD
 
 ---
 
----
-
 ## Circuit Schematic
 
 ![CS Amplifier Circuit](Results/circuit.png)
 
 ## 3. Design Calculations
+
+### GIVEN PARAMETERS
+
+- Technology: TSMC 180nm
+- Supply voltage, $V_{DD} = 1.8V$
+- Power constraint ≤ 1mW
+- Channel length, $L_n = 560nm$
+- Threshold voltage, $V_T ≈ 0.366V$
+- Electron mobility, $\mu_n = 273.81 \times 10^{-4} \, m^2/Vs$
+- Load capacitor, $C_L = 10pF$
+- Gate oxide thickness, $t_ox = 4.1 \times 10^{-9} \,m$
 
 ### 3.1 Power Constraint
 
