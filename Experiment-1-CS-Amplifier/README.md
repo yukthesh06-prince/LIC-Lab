@@ -22,6 +22,8 @@ The CS amplifier provides:
 - 180° phase inversion
 - High input impedance
 
+For proper amplification, it is very important that the transistor is biased correctly so that it remains in the saturation region for the entire input signal swing.
+
 ---
 
 ## 2. Working Principle
@@ -172,6 +174,8 @@ the transistor clearly satisfies the saturation condition. This confirms that th
 DC Operating Point :
 
 ![Imabe](Results/values.png)
+
+This figure shows the circuit along with the DC operating point results obtained after simulation. The drain voltage being approximately equal to 0.9V confirms that the transistor is correctly biased and operating in the saturation region. This establishes the Q-point of the amplifier.
 
 ### 3.3 Drain Resistance ($$R_{D}$$)
 
