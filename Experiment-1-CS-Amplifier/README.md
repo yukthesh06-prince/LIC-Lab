@@ -381,8 +381,6 @@ $$
 BW = 3.672 \text{ MHz}
 $$
 
-### Conclusion from AC Analysis
-
 The amplifier exhibits a midband gain of 11.44 dB and a bandwidth of 3.672 MHz.  
 The high-frequency roll-off is mainly due to the load capacitance ($C_L$), which introduces a dominant pole at the output node. 
 
@@ -391,6 +389,8 @@ The high-frequency roll-off is mainly due to the load capacitance ($C_L$), which
 ### Note
 
 Channel length modulation is neglected in first-order theoretical analysis.
+
+---
 
 ### Inference
 
