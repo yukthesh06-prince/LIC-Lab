@@ -36,8 +36,8 @@ $$
 
 When a small AC signal is applied at the gate:
 
-- Increase in VGS → Increase in ID
-- Increased ID causes larger voltage drop across RD
+- Increase in $$V_{GS}$$ → Increase in $$I_{D}$$
+- Increased $$I_{D}$$ causes larger voltage drop across $$R_{D}$$
 - Drain voltage decreases
 
 Thus,
