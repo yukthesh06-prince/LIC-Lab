@@ -237,22 +237,91 @@ After this adjustment, the operating point matched the design target.
 
 ![Transient Analysis](Results/transient.png)
 
-gm = 2ID / VOV  
+###Simulated Gain
 
-gm = (2 × 200µA) / 0.54  
-gm = 0.00074 S  
+Input signal parameters:
 
-Voltage gain:
+$$
+f = 1 \text{ kHz}
+$$
 
-Av = − gm RD  
+$$
+\text{Amplitude} = 10 \text{ mV}
+$$
 
-Av = − (0.00074 × 4500)  
-Av ≈ −3.33 V/V  
+$$
+\text{DC Offset} = 0.9V
+$$
+
+Measured peak-to-peak values:
+
+$$
+V_{in(p-p)} = 909.797mV - 890.438mV
+$$
+
+$$
+V_{in(p-p)} = 19.359mV
+$$
+
+$$
+V_{out(p-p)} = 932.325mV - 867.179mV
+$$
+
+$$
+V_{out(p-p)} = 65.146mV
+$$
+
+Voltage gain from transient response:
+
+$$
+A_v = \frac{V_{out(p-p)}}{V_{in(p-p)}}
+$$
+
+$$
+A_v = \frac{65.146 \times 10^{-3}}{19.359 \times 10^{-3}}
+$$
+
+$$
+A_v = 3.365
+$$
 
 Gain in dB:
 
-Av(dB) = 20 log₁₀ (3.33)  
-Av(dB) ≈ 10.45 dB  
+$$
+A_v(dB) = 20 \log_{10}(A_v)
+$$
+
+$$
+A_v(dB) = 20 \log_{10}(3.365)
+$$
+
+$$
+A_v(dB) = 10.539 \text{ dB}
+$$  
+
+### Theoretical Gain
+
+$$
+A_v = \frac{2 I_D R_D}{V_{OV}}
+$$
+
+$$
+A_v = \frac{2 \times 200 \times 10^{-6} \times 4.5 \times 10^{3}}{0.9 - 0.36}
+$$
+
+$$
+A_v = 3.333
+$$
+
+Gain in dB:
+
+$$
+A_v(dB) = 20 \log_{10}(3.333)
+$$
+
+$$
+A_v(dB) = 10.45 \text{ dB}
+$$
 
 ---
 
