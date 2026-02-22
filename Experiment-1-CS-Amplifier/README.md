@@ -165,6 +165,12 @@ Av(dB) ≈ 10.45 dB
 
 ### 3.6 Bandwidth Estimation
 
+---
+
+## AC Analysis
+
+![AC Analysis](Results/ac.png)
+
 Dominant pole frequency:
 
 fp = 1 / (2π RD CL)  
