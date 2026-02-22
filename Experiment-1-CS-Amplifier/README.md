@@ -47,6 +47,10 @@ Av = − gm × RD
 
 ---
 
+## Circuit Schematic
+
+![CS Amplifier Circuit](Results/circuit.png)
+
 ## 3. Design Calculations
 
 ### 3.1 Power Constraint
