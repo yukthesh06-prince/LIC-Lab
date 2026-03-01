@@ -567,7 +567,7 @@ Unity Gain Frequency ≈ 1.516 GHz
 
 The difference between theoretical and simulated results arises due to second-order effects such as channel length modulation, mobility degradation, and parasitic capacitances included in the practical MOSFET model.
 
-From the AC analysis, it is observed that the load capacitance ($C_L$) introduces a dominant pole at the output node, limiting the high-frequency response and defining the bandwidth of the amplifier.
+From the AC analysis, it is observed that the intrinsic capacitance introduces a dominant pole at the output node, limiting the high-frequency response and defining the bandwidth of the amplifier.
 
 Source degeneration improves bias stability and linearity but reduces the overall gain compared to an ideal CS amplifier without degeneration.
 
