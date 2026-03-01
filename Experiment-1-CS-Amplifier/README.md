@@ -100,7 +100,7 @@ $$
 Power dissipated:
 
 $$
-P = 1.8 × 200µA = 0.36mW
+P = 1.8V  ×  200µA = 0.36mW
 $$
 
 Since 0.36mW < 1mW, power constraint is satisfied.
