@@ -808,6 +808,6 @@ $$
 
 shows that the finite output resistance of the current source transistor (M3) significantly reduces the gain through the denominator term. Any variation in $r_{o3}$ directly affects the gain, explaining the difference between analytical and simulated results.
 
-From the AC analysis, the load capacitance ($C_L$) and intrinsic parasitic capacitances introduce a dominant pole at the output node, limiting the high-frequency response and defining the bandwidth.
+From the AC analysis, the intrinsic parasitic capacitances introduce a dominant pole at the output node, limiting the high-frequency response and defining the bandwidth.
 
 Thus, Experiment B demonstrates how replacing the source resistor with a transistor current source improves bias stability but introduces additional degeneration, resulting in reduced gain compared to Experiment A.
