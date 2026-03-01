@@ -542,7 +542,6 @@ First-order theoretical analysis assumes ideal saturation and neglects higher-or
 |------------|-------------|-----------|
 | Voltage Gain ($A_v$) | 15.38 V/V | 24.53 V/V |
 | Gain (dB) | 23.74 dB | 27.79 dB |
-| Power | 0.36 mW | 0.36 mW |
 
 ---
 
