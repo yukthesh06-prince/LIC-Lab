@@ -36,7 +36,7 @@ The source resistor $R_S$ introduces negative feedback in the circuit. This tech
 With source degeneration, the voltage gain becomes:
 
 $$
-A_v \approx \frac{-g_m r_o}{1 + g_m R_S}
+A_v = \frac{g_m (r_{o1} || r_{o2})}{1 + g_m R_S}
 $$
 
 Effects of source degeneration:
