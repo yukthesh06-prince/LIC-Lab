@@ -1,4 +1,4 @@
-# Experiment 2A - Common Source (CS) Amplifier using PMOS Active Load and Diode-Connected NMOS
+# Experiment 2C - Common Source (CS) Amplifier using PMOS Active Load and Diode-Connected NMOS
 
 ## Aim
 To design a Common Source (CS) amplifier using an NMOS transistor with PMOS Active Load and Diode-Connected NMOS in 180nm TSMC technology in LTSpice with a supply voltage of 1.8V and power constraint less than or equal to 1mW, and to analyze its DC operating point, transient response, voltage gain, and bandwidth.
