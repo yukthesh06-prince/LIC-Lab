@@ -655,6 +655,8 @@ $$
 V_{id} = 100mV < 0.48V
 $$
 
+![Circuit 2](Results/exp4a_transient1.png)
+
 Observation:
 
 - Output waveform is sinusoidal
@@ -670,6 +672,8 @@ $$
 V_{id} = 600mV > 0.48V
 $$
 
+![Circuit 2](Results/exp4a_transient2.png)
+
 Observation:
 
 - Output waveform shows distortion
@@ -677,12 +681,41 @@ Observation:
 - One transistor enters cutoff region
 - Linear amplification is lost
 
+##
+
+The behavior of the differential amplifier is analyzed for two cases based on the input differential voltage.
+
+### Comparison Table
+
+| Parameter | Case 1: Linear Region | Case 2: Non-Linear Region |
+|----------|----------------------|--------------------------|
+| Condition | $V_{id} < \sqrt{2}V_{OV}$ | $V_{id} > \sqrt{2}V_{OV}$ |
+| Input ($V_{id}$) | 100 mV | 600 mV |
+| Output waveform | Sinusoidal | Distorted / Clipped |
+| Gain | Constant | Reduced / Non-linear |
+| Transistor operation | Both in saturation | One enters cutoff |
+| Current distribution | Equal sharing | Current shifts to one transistor |
+
+### Interpretation
+
+In the linear region, the differential input voltage is small, and both transistors operate in saturation. The tail current is equally shared, resulting in a proportional and undistorted output. Hence, the amplifier exhibits linear behavior with constant gain.
+
+In the non-linear region, the input differential voltage exceeds the limit, causing one transistor to carry most of the current while the other moves toward cutoff. This results in distortion and loss of linearity in the output waveform.
+
 ### Conclusion
 
-The circuit behaves as a linear amplifier only when:
+The differential amplifier operates linearly only for small input signals.
 
 $$
 |V_{id}| < \sqrt{2} V_{OV}
 $$
 
-Beyond this limit, the amplifier enters the non-linear region.
+As the differential input voltage increases beyond the limit:
+
+$$
+|V_{id}| > \sqrt{2} V_{OV}
+$$
+
+the circuit transitions from linear amplification to non-linear behavior due to unequal current distribution and transistor cutoff.
+
+
