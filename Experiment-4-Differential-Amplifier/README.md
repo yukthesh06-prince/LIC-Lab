@@ -425,10 +425,264 @@ $$
 
 Thus, the deviation from the theoretical width arises due to non-ideal device behavior and the need to meet exact biasing conditions in simulation.
 
+---
+
 ## DC Analysis
 
+![DC Analysis](Results/exp4a_dc.png)
 
-
-The DC operating point confirms that the output voltage is near the designed bias value, ensuring proper saturation operation.
+The DC operating point confirms that the output voltage and source voltage is near the designed bias value, ensuring proper saturation operation.
 
 ---
+
+### 1.2.f Input Common Mode Range (ICMR)
+
+The input common-mode range is defined as the range of input voltage for which all transistors remain in saturation.
+
+### Minimum Input Common Mode Voltage
+
+For proper operation, the tail current source must remain active and the NMOS transistors must stay in saturation.
+
+Condition:
+
+$$
+V_{GS} \ge V_T
+$$
+
+Using:
+
+$$
+V_{GS} = V_{ICM} - V_S
+$$
+
+So,
+
+$$
+V_{ICM(min)} = V_S + V_T
+$$
+
+Substituting values:
+
+$$
+V_S = -0.7V, \quad V_T = 0.36V
+$$
+
+$$
+V_{ICM(min)} = -0.7 + 0.36
+$$
+
+$$
+V_{ICM(min)} = -0.34V
+$$
+
+### Maximum Input Common Mode Voltage
+
+For maximum input voltage, the NMOS transistors must remain in saturation.
+
+Condition:
+
+$$
+V_{DS} \ge V_{OV}
+$$
+
+Using:
+
+$$
+V_D = 0V, \quad V_S = -0.7V
+$$
+
+$$
+V_{DS} = V_D - V_S = 0 - (-0.7) = 0.7V
+$$
+
+Now,
+
+$$
+V_{ICM(max)} = V_D + V_T
+$$
+
+Substituting:
+
+$$
+V_{ICM(max)} = 0 + 0.36
+$$
+
+$$
+V_{ICM(max)} = 0.36V
+$$
+
+### Final Input Common Mode Range
+
+$$
+-0.34V \le V_{ICM} \le 0.36V
+$$
+
+##
+
+### 1.2.g Output Common Mode Range
+
+The output common-mode voltage range is determined by ensuring that the NMOS transistors remain in saturation and the circuit operates properly.
+
+### Maximum Output Voltage
+
+The maximum output voltage occurs when the drain voltage is at its highest possible value, which is limited by the supply voltage:
+
+$$
+V_{OCM(max)} \le V_{DD}
+$$
+
+However, to maintain current flow through the load resistor:
+
+$$
+V_{OCM(max)} = V_{DD}
+$$
+
+$$
+V_{OCM(max)} = 0.9V
+$$
+
+### Minimum Output Voltage
+
+For proper operation, the NMOS transistors must remain in saturation:
+
+$$
+V_{DS} \ge V_{OV}
+$$
+
+Using:
+
+$$
+V_{DS} = V_D - V_S
+$$
+
+At the edge of saturation:
+
+$$
+V_D - V_S = V_{OV}
+$$
+
+So,
+
+$$
+V_D = V_S + V_{OV}
+$$
+
+Since:
+
+$$
+V_D = V_{OCM(min)}
+$$
+
+$$
+V_{OCM(min)} = V_S + V_{OV}
+$$
+
+### Substituting Values
+
+$$
+V_S = -0.7V, \quad V_{OV} = 0.34V
+$$
+
+$$
+V_{OCM(min)} = -0.7 + 0.34
+$$
+
+$$
+V_{OCM(min)} = -0.36V
+$$
+
+### Final Output Common Mode Range
+
+$$
+-0.36V \le V_{OCM} \le 0.9V
+$$
+
+##
+
+### 1.2.h Differential Input Voltage Range (Linear Region)
+
+The differential amplifier behaves linearly only when both transistors operate in saturation and the current is approximately equally shared between them.
+
+For a MOS differential pair, linear operation is maintained when the differential input voltage is small compared to the overdrive voltage.
+
+### Condition for Linear Operation
+
+$$
+|V_{id}| \le 2V_{OV}
+$$
+
+### Substituting Values
+
+$$
+V_{OV} = 0.34V
+$$
+
+$$
+|V_{id}| \le 2 \times 0.34
+$$
+
+$$
+|V_{id}| \le 0.68V
+$$
+
+### Final Linear Range
+
+$$
+-0.68V \le V_{id} \le 0.68V
+$$
+
+---
+
+## 1.3 Transient Analysis and Linearity Observation
+
+The linear behavior of the differential amplifier is verified using transient analysis.
+
+### Condition for Linearity
+
+$$
+|V_{id}| < \sqrt{2} V_{OV}
+$$
+
+$$
+\sqrt{2} V_{OV} = 1.414 \times 0.34 = 0.48V
+$$
+
+### Case 1: Linear Region
+
+Input applied:
+
+$$
+V_{id} = 100mV < 0.48V
+$$
+
+Observation:
+
+- Output waveform is sinusoidal
+- No distortion observed
+- Both transistors operate in saturation
+- Amplifier behaves linearly
+
+### Case 2: Non-Linear Region
+
+Input applied:
+
+$$
+V_{id} = 600mV > 0.48V
+$$
+
+Observation:
+
+- Output waveform shows distortion
+- Clipping observed
+- One transistor enters cutoff region
+- Linear amplification is lost
+
+### Conclusion
+
+The circuit behaves as a linear amplifier only when:
+
+$$
+|V_{id}| < \sqrt{2} V_{OV}
+$$
+
+Beyond this limit, the amplifier enters the non-linear region.
