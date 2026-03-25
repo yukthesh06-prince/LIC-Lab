@@ -427,7 +427,7 @@ Thus, the deviation from the theoretical width arises due to non-ideal device be
 
 ## DC Analysis
 
-![DC Analysis](Results/exp4a_dc.png)
+
 
 The DC operating point confirms that the output voltage is near the designed bias value, ensuring proper saturation operation.
 
