@@ -718,6 +718,12 @@ $$
 
 the circuit transitions from linear amplification to non-linear behavior due to unequal current distribution and transistor cutoff.
 
+##
+
+## Theoretical and Simulated Gain
+
+---
+
 ## 1.4 AC Analysis
 
 
