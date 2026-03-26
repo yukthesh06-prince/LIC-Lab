@@ -672,7 +672,7 @@ $$
 V_{id} = 600mV > 0.48V
 $$
 
-![Circuit 2](Results/exp4a_transient2.png)
+![Circuit 3](Results/exp4a_transient2.png)
 
 Observation:
 
@@ -721,6 +721,199 @@ the circuit transitions from linear amplification to non-linear behavior due to 
 ##
 
 ## Theoretical and Simulated Gain
+
+![Circuit 4](Results/exp4a_transient3.png)
+
+The output waveform is amplified and inverted.
+
+### Simulated Gain
+
+Input signal parameters:
+
+- Type: Sine wave  
+- Frequency = 1kHz  
+- Amplitude = 50mV (applied differentially) 
+- DC Offset = 0V
+
+Measured peak-to-peak values:
+
+$$
+V_{in(p-p)} = 50mV - ( - 50mV ) = 100mV
+$$
+
+$$
+V_{out(p-p)} = 302mV - ( - 302mV ) = 604mV
+$$
+
+Voltage gain:
+
+$$
+A_v = \frac{V_{out(p-p)}}{V_{in(p-p)}}
+$$
+
+$$
+A_v = \frac{604 \times 10^{-3}}{100 \times 10^{-3}}
+$$
+
+$$
+A_v = 6.04
+$$
+
+Gain in dB:
+
+$$
+A_v(dB) = 20\log_{10}(6.04)
+$$
+
+$$
+A_v(dB) = 15.62dB
+$$
+
+##
+
+### Theoretical Gain
+
+Assume channel length modulation:
+
+$$
+\lambda = 0.1 \, V^{-1}
+$$
+
+### Output Resistance
+
+The output resistance of each MOSFET is:
+
+$$
+r_o = \frac{1}{\lambda I_D}
+$$
+
+Substituting:
+
+$$
+I_D = 0.5mA = 0.5 \times 10^{-3}A
+$$
+
+$$
+r_o = \frac{1}{0.1 \times 0.5 \times 10^{-3}}
+$$
+
+$$
+r_o = 20k\Omega
+$$
+
+### Effective Output Resistance
+
+Since two transistors are present:
+
+$$
+r_{o,eff} = r_{o1} \parallel r_{o2}
+$$
+
+$$
+r_{o,eff} = 20k \parallel 20k
+$$
+
+$$
+r_{o,eff} = 10k\Omega
+$$
+
+### Transconductance
+
+$$
+g_m = \frac{2 I_D}{V_{OV}}
+$$
+
+$$
+g_m = \frac{2 \times 0.5 \times 10^{-3}}{0.34}
+$$
+
+$$
+g_m \approx 2.94mS
+$$
+
+### Total Output Resistance
+
+The effective load seen at the output is:
+
+$$
+R_{out} = R_D \parallel r_{o,eff}
+$$
+
+$$
+R_{out} = 1.8k \parallel 10k
+$$
+
+$$
+R_{out} \approx 1.53k\Omega
+$$
+
+### Differential Gain
+
+$$
+A_d = g_m R_{out}
+$$
+
+$$
+A_d = 2.94 \times 10^{-3} \times 1.53 \times 10^3
+$$
+
+$$
+A_d \approx 4.5
+$$
+
+### Gain in dB
+
+$$
+A_d(dB) = 20 \log_{10}(4.5)
+$$
+
+$$
+A_d(dB) \approx 13.06dB
+$$
+
+##
+
+## Reason for Difference Between Theoretical and Simulated Gain
+
+A deviation is observed between the theoretical and simulated gain values. This difference arises due to the simplifying assumptions made in analytical calculations and the inclusion of non-ideal effects in simulation.
+
+### Reasons for Deviation
+
+ ### 1. Channel Length Modulation
+
+In theoretical calculations, channel length modulation is often neglected or approximated.  
+However, in simulation, the MOSFET model includes a more accurate value of $\lambda$, which affects the output resistance $r_o$ and hence the gain.
+
+ ### 2. Finite Output Resistance
+
+The theoretical gain assumes ideal conditions, whereas in simulation, the finite output resistance of MOSFETs modifies the effective load resistance:
+
+$$
+R_{out} = R_D \parallel r_o
+$$
+
+This changes the overall gain.
+
+ ### 3. Mobility Degradation and Short Channel Effects
+
+In practical MOSFET models, carrier mobility reduces with increasing electric field.  
+This reduces the effective transconductance $g_m$, which directly affects gain.
+
+ ### 4. Variation in Overdrive Voltage ($V_{OV}$)
+
+Theoretical calculations assume a fixed $V_{OV}$, whereas in simulation, the operating point may slightly shift, causing variations in $g_m$ and current.
+
+ ### 5. Parasitic Capacitances
+
+Simulation includes intrinsic parasitic capacitances, which influence the dynamic response and slightly affect the measured gain, especially in transient analysis.
+
+ ### 6. Measurement Method
+
+In simulation, gain is obtained from waveform measurements, which may include small inaccuracies due to scaling, cursor placement, or non-ideal waveform symmetry.
+
+### Conclusion
+
+Thus, the difference between theoretical and simulated gain is expected and arises due to practical device behavior and more accurate modeling in simulation compared to simplified analytical expressions.
 
 ---
 
