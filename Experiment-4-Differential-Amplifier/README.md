@@ -919,4 +919,147 @@ Thus, the difference between theoretical and simulated gain is expected and aris
 
 ## 1.4 AC Analysis
 
+![Circuit 5](Results/exp4a_ac.png)
+
+In AC analysis, the frequency response of the Differential Amplifier is observed.
+
+The midband gain is obtained from the flat region of the Bode plot.  
+The bandwidth is defined as the frequency range between the lower cutoff frequency ($f_L$) and upper cutoff frequency ($f_H$), measured at the −3 dB points.
+
+##
+
+### Midband gain:
+
+From AC simulation:
+
+$$
+A_v = 9.871 \text{ dB}
+$$
+
+The −3 dB gain is:
+
+$$
+A_v - 3 = 9.871 - 3
+$$
+
+$$
+A_v - 3 = 6.871 \text{ dB}
+$$
+
+##
+
+### Cutoff Frequencies
+
+Lower cutoff frequency:
+
+$$
+f_L = 0
+$$
+
+Upper cutoff frequency:
+
+$$
+f_H = 4.819 \text{ MHz}
+$$
+
+##
+
+### Bandwidth
+
+Bandwidth is defined as:
+
+$$
+BW = f_H - f_L
+$$
+
+$$
+BW = 4.819 - 0
+$$
+
+$$
+BW = 4.819 \text{ MHz}
+$$
+
+---
+
+### 1.5 Unity Gain Bandwidth (UGB)
+
+Since the 0 dB crossing is not visible in the plot, UGB cannot be directly measured.
+
+However, it can be approximated as:
+
+$$
+UGB = A_v \times BW
+$$
+
+$$
+A_v = 6.04
+$$
+
+$$
+UGB = 6.04 \times 4.819 \text{ MHz}
+$$
+
+$$
+UGB = 29.106 \text{ MHz}
+$$
+
+---
+
+### Note
+
+First-order theoretical analysis assumes ideal MOSFET operation in saturation and neglects higher-order effects such as channel length modulation, mobility degradation, and parasitic capacitances. These non-ideal effects are included in simulation, leading to differences between theoretical and simulated results.
+
+## Comparison of Results
+
+| Parameter | Theoretical | Simulated |
+|------------|-------------|-----------|
+| Voltage Gain ($A_v$) | 4.5 V/V | 6.04 V/V |
+| Gain (dB) | 14.46 dB | 15.62 dB |
+
+The deviation between theoretical and simulated gain is mainly due to simplified first-order assumptions used in analytical calculations and the inclusion of non-ideal MOSFET effects such as channel length modulation, mobility degradation, and parasitic capacitances in simulation.
+
+---
+
+## Inference
+
+The MOS differential amplifier with resistive load was successfully designed and analyzed while satisfying the given design constraints:
+
+Power consumption ≤ 1.8mW  
+VDD = 0.9V  
+VSS = -0.9V  
+Vocm = 0V  
+
+The tail current was selected as 1mA to ensure operation within the power limit (1.8mW). Under balanced conditions, the current splits equally between the two transistors:
+
+$$
+I_{D1} = I_{D2} = 0.5mA
+$$
+
+The bias point was carefully chosen such that both NMOS transistors operate in saturation, ensuring proper differential amplification. The source node voltage was adjusted to match the required tail voltage:
+
+$$
+V_S \approx -0.7V
+$$
+
+by tuning the transistor width during simulation.
+
+Theoretical and simulated results are reasonably consistent:
+
+Theoretical gain ≈ 5.29 V/V (14.46 dB)  
+Simulated gain ≈ 6.04 V/V (15.62 dB)  
+Simulated bandwidth ≈ 4.819 MHz  
+Unity Gain Bandwidth ≈ 15.03 MHz  
+
+The deviation between theoretical and simulated gain arises due to second-order effects such as channel length modulation, mobility degradation, and parasitic capacitances included in the MOSFET model. Additionally, the theoretical analysis assumes ideal conditions and neglects the finite output resistance of transistors.
+
+From the AC analysis, it is observed that the amplifier exhibits a flat midband gain followed by a roll-off at higher frequencies due to parasitic capacitances, which introduce a dominant pole and limit the bandwidth.
+
+The differential amplifier provides good linear amplification for small differential input signals. However, when the input differential voltage exceeds the linear range, the circuit enters non-linear operation, resulting in distortion.
+
+Hence, the designed differential amplifier satisfies the required specifications and demonstrates proper biasing, expected gain characteristics, and acceptable frequency response behavior.
+
+---
+
+## Circuit 2: Differential Amplifier with Resistive Load
 
