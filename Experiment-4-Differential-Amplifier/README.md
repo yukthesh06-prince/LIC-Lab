@@ -1875,3 +1875,56 @@ $$
 $$
 
 the circuit exhibits non-linear behavior due to current steering and transistor cutoff.
+
+##
+
+## Theoretical and Simulated Gain
+
+![Circuit 4](Results/exp4b_transient1.png)
+
+The output waveform is amplified and inverted.
+
+### Simulated Gain
+
+Input signal parameters:
+
+- Type: Sine wave  
+- Frequency = 1kHz  
+- Amplitude = 50mV (applied differentially) 
+- DC Offset = 0V
+
+Measured peak-to-peak values:
+
+$$
+V_{in(p-p)} = 50mV - ( - 50mV ) = 100mV
+$$
+
+$$
+V_{out(p-p)} = 106mV - ( - 75mV ) = 181mV
+$$
+
+Voltage gain:
+
+$$
+A_v = \frac{V_{out(p-p)}}{V_{in(p-p)}}
+$$
+
+$$
+A_v = \frac{181 \times 10^{-3}}{100 \times 10^{-3}}
+$$
+
+$$
+A_v = 1.81
+$$
+
+Gain in dB:
+
+$$
+A_v(dB) = 20\log_{10}(1.81)
+$$
+
+$$
+A_v(dB) = 5.153dB
+$$
+
+##
