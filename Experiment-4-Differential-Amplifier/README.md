@@ -2104,7 +2104,7 @@ It arises due to the use of simplified analytical models in theory and the inclu
 
 ## 2.4 AC Analysis
 
-![Circuit 5](Results/exp4a_ac.png)
+![Circuit 5](Results/exp4b_ac.png)
 
 In AC analysis, the frequency response of the Differential Amplifier is observed.
 
@@ -2144,7 +2144,7 @@ $$
 Upper cutoff frequency:
 
 $$
-f_H = 2.949 \text{ GHz}
+f_H = 2.2 \text{ GHz}
 $$
 
 ##
@@ -2158,11 +2158,95 @@ BW = f_H - f_L
 $$
 
 $$
-BW = 2.949 - 0
+BW = 2.2 - 0
 $$
 
 $$
-BW = 2.949 \text{ GHz}
+BW = 2.2 \text{ GHz}
 $$
 
 ---
+
+## 2.5 Unity Gain Bandwidth (UGB)
+
+$$
+f_{0dB} \approx 4.8 \text{GHz}
+$$
+
+$$
+UGB = A_v \times f_H
+$$
+
+Using linear gain:
+
+$$
+A_v = 1.81
+$$
+
+$$
+UGB = 1.81 \times 4.8 \text{ GHz}
+$$
+
+$$
+UGB = 8.688 \text{ GHz}
+$$
+
+---
+
+### Note
+
+First-order theoretical analysis assumes ideal MOSFET operation in saturation and neglects higher-order effects such as channel length modulation, mobility degradation, finite output resistance of current sources, and parasitic capacitances. These non-ideal effects are included in simulation, leading to differences between theoretical and simulated results.
+
+## Comparison of Results
+
+| Parameter | Theoretical | Simulated |
+|------------|-------------|-----------|
+| Voltage Gain ($A_v$) | 41.7 V/V | 1.81 V/V |
+| Gain (dB) | 32.4 dB | 5.153 dB |
+
+The deviation between theoretical and simulated gain is mainly due to simplified first-order assumptions and the presence of non-ideal MOSFET effects such as finite output resistance of the current source, channel length modulation, and parasitic capacitances.
+
+---
+
+## Inference
+
+The MOS differential amplifier with PMOS active load and NMOS current source was successfully designed and analyzed while satisfying the given design constraints:
+
+Power consumption ≤ 1.8mW  
+VDD = 0.9V  
+VSS = -0.9V  
+Vocm = 0V  
+
+The tail current was set close to 1mA to ensure operation within the power limit. Under balanced conditions, the current splits equally between the two branches:
+
+$$
+I_{D1} = I_{D2} \approx 0.5mA
+$$
+
+The biasing was carefully adjusted to ensure all transistors (M1, M2, M3, M4, and M5) operate in saturation. The tail node voltage was fixed at:
+
+$$
+V_S \approx -0.7V
+$$
+
+by tuning the transistor widths in simulation.
+
+Theoretical and simulated results show a significant deviation:
+
+Theoretical gain ≈ 41.7 V/V (32.4 dB)  
+Simulated gain ≈ 1.81 V/V (5.135 dB)  
+
+This large difference arises because the theoretical gain assumes an ideal current source and large output resistance. In practice:
+
+- The NMOS current source (M5) has finite output resistance  
+- The PMOS active load (M3, M4) is not ideal  
+- Channel length modulation reduces effective gain  
+- Mobility degradation reduces transconductance  
+
+These factors significantly reduce the gain in simulation.
+
+From AC analysis, the amplifier shows a flat midband gain followed by a roll-off at higher frequencies due to parasitic capacitances and the load capacitance, which introduce a dominant pole and limit bandwidth.
+
+The differential amplifier provides linear amplification for small differential inputs. However, for large input signals, current steering causes one transistor to turn OFF, leading to distortion and non-linear behavior.
+
+Hence, the designed differential amplifier demonstrates correct biasing and operation, but highlights the impact of non-ideal device behavior on gain when using active loads and current sources.
