@@ -1928,3 +1928,241 @@ A_v(dB) = 5.153dB
 $$
 
 ##
+
+### Theoretical Gain
+
+Assume channel length modulation:
+
+$$
+\lambda = 0.1 \, V^{-1}
+$$
+
+### Output Resistance
+
+The output resistance of each MOSFET is:
+
+$$
+r_o = \frac{1}{\lambda I_D}
+$$
+
+Substituting:
+
+$$
+I_D = 0.5mA = 0.5 \times 10^{-3}A
+$$
+
+$$
+r_o = \frac{1}{0.1 \times 0.5 \times 10^{-3}}
+$$
+
+$$
+r_o = 20k\Omega
+$$
+
+### Effective Output Resistance
+
+Since both NMOS and PMOS contribute:
+
+$$
+r_{o,eff} = r_{o_n} \parallel r_{o_p}
+$$
+
+$$
+r_{o,eff} = 20k \parallel 20k
+$$
+
+$$
+r_{o,eff} = 10k\Omega
+$$
+
+### Transconductance
+
+$$
+g_m = \frac{2 I_D}{V_{OV}}
+$$
+
+Substituting:
+
+$$
+V_{OV} = 0.24V
+$$
+
+$$
+g_m = \frac{2 \times 0.5 \times 10^{-3}}{0.24}
+$$
+
+$$
+g_m \approx 4.17mS
+$$
+
+### Total Output Resistance
+
+Since active load is used (no resistor):
+
+$$
+R_{out} = r_{o,eff}
+$$
+
+$$
+R_{out} = 10k\Omega
+$$
+
+### Differential Gain
+
+$$
+A_d = g_m R_{out}
+$$
+
+$$
+A_d = 4.17 \times 10^{-3} \times 10 \times 10^3
+$$
+
+$$
+A_d \approx 41.7
+$$
+
+### Gain in dB
+
+$$
+A_d(dB) = 20 \log_{10}(41.7)
+$$
+
+$$
+A_d(dB) \approx 32.4dB
+$$
+
+##
+
+## Reason for Difference Between Theoretical and Simulated Gain
+
+A deviation is observed between the theoretical and simulated gain values. This difference arises due to simplifying assumptions in analytical calculations and the inclusion of non-ideal MOSFET effects in simulation.
+
+### Reasons for Deviation
+
+### 1. Channel Length Modulation
+
+In theoretical calculations, channel length modulation is approximated using a constant value of $\lambda$.  
+However, in simulation, both NMOS and PMOS devices have more accurate and bias-dependent $\lambda$, affecting the output resistance:
+
+$$
+r_o = \frac{1}{\lambda I_D}
+$$
+
+This directly impacts the gain.
+
+### 2. Finite Output Resistance of Active Load
+
+In Circuit 2, the load is implemented using PMOS transistors instead of resistors.
+
+The effective output resistance is:
+
+$$
+R_{out} = r_{o_n} \parallel r_{o_p}
+$$
+
+Any variation in NMOS and PMOS output resistances significantly affects the gain.
+
+### 3. Mobility Degradation and Short Channel Effects
+
+In practical MOSFET models, carrier mobility decreases with increasing electric field.  
+This reduces the effective transconductance:
+
+$$
+g_m = \frac{2I_D}{V_{OV}}
+$$
+
+leading to lower gain in simulation compared to theory.
+
+### 4. Variation in Overdrive Voltage ($V_{OV}$)
+
+Theoretical calculations assume a fixed overdrive voltage.  
+However, in simulation, the operating point slightly shifts, causing variations in $V_{OV}$ and hence in $g_m$ and gain.
+
+### 5. Current Source Non-Ideality (M5)
+
+The tail current source (M5) is not ideal in simulation.
+
+- Finite output resistance  
+- Slight variation in tail current  
+
+This affects current distribution and reduces gain.
+
+### 6. Parasitic Capacitances
+
+Simulation includes intrinsic capacitances of MOSFETs, which influence signal behavior and slightly reduce the observed gain, especially at higher frequencies.
+
+### 7. Measurement Method
+
+Gain in simulation is obtained from waveform measurements, which may introduce minor inaccuracies due to scaling, cursor placement, and waveform asymmetry.
+
+### Conclusion
+
+Thus, the difference between theoretical and simulated gain is expected.  
+It arises due to the use of simplified analytical models in theory and the inclusion of realistic device behavior and non-ideal effects in simulation.
+
+---
+
+## 2.4 AC Analysis
+
+![Circuit 5](Results/exp4a_ac.png)
+
+In AC analysis, the frequency response of the Differential Amplifier is observed.
+
+The midband gain is obtained from the flat region of the Bode plot.  
+The bandwidth is defined as the frequency range between the lower cutoff frequency ($f_L$) and upper cutoff frequency ($f_H$), measured at the −3 dB points.
+
+##
+
+### Midband gain:
+
+From AC simulation:
+
+$$
+A_v = 5.2 \text{ dB}
+$$
+
+The −3 dB gain is:
+
+$$
+A_v - 3 = 5.2 - 3
+$$
+
+$$
+A_v - 3 = 2.2 \text{ dB}
+$$
+
+##
+
+### Cutoff Frequencies
+
+Lower cutoff frequency:
+
+$$
+f_L = 0
+$$
+
+Upper cutoff frequency:
+
+$$
+f_H = 2.949 \text{ GHz}
+$$
+
+##
+
+### Bandwidth
+
+Bandwidth is defined as:
+
+$$
+BW = f_H - f_L
+$$
+
+$$
+BW = 2.949 - 0
+$$
+
+$$
+BW = 2.949 \text{ GHz}
+$$
+
+---
