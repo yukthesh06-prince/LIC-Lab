@@ -1427,3 +1427,121 @@ Since $0.9V$ is sufficiently large, both PMOS transistors operate in saturation.
 
 All transistors (M1, M2, M3, M4, and M5) operate in saturation, ensuring proper differential amplifier operation.
 
+##
+
+### 2.2.d Width Calculation
+
+The drain current in saturation is given by:
+
+$$
+I_D = \frac{1}{2} \mu_n C_{ox} \frac{W}{L} (V_{OV})^2
+$$
+
+Rearranging to find width:
+
+$$
+W = \frac{2 I_D L}{\mu_n C_{ox} (V_{OV})^2}
+$$
+
+### NMOS Differential Pair (M1 and M2)
+
+From previous calculations:
+
+$$
+I_D = 0.5mA = 0.5 \times 10^{-3}A
+$$
+
+$$
+V_{OV} = 0.34V
+$$
+
+$$
+L = 480nm = 480 \times 10^{-9}m
+$$
+
+$$
+\mu_n C_{ox} = 236.5 \mu A/V^2 = 2.365 \times 10^{-4}
+$$
+
+#### Substituting:
+
+$$
+W = \frac{2 \times 0.5 \times 10^{-3} \times 480 \times 10^{-9}}{2.365 \times 10^{-4} \times (0.34)^2}
+$$
+
+$$
+W = \frac{480 \times 10^{-12}}{2.365 \times 10^{-4} \times 0.1156}
+$$
+
+$$
+W = \frac{480 \times 10^{-12}}{2.733 \times 10^{-5}}
+$$
+
+$$
+W \approx 17.56 \mu m
+$$
+
+### Final Width (M1 and M2)
+
+$$
+W_{M1} = W_{M2} \approx 17.6 \mu m
+$$
+
+##
+
+### NMOS Current Source (M5)
+
+From previous calculations:
+
+$$
+I_D = I_{SS} = 1mA = 1 \times 10^{-3}A
+$$
+
+$$
+V_{OV5} = 0.2V
+$$
+
+#### Substituting:
+
+$$
+W = \frac{2 \times 1 \times 10^{-3} \times 480 \times 10^{-9}}{2.365 \times 10^{-4} \times (0.2)^2}
+$$
+
+$$
+W = \frac{960 \times 10^{-12}}{2.365 \times 10^{-4} \times 0.04}
+$$
+
+$$
+W = \frac{960 \times 10^{-12}}{9.46 \times 10^{-6}}
+$$
+
+$$
+W \approx 101.5 \mu m
+$$
+
+### Width Adjustment
+
+To achieve the desired biasing conditions (\(V_p \approx -0.7V\) and \(I_{SS} \approx 1mA\)), the transistor widths were tuned in simulation.
+
+Updated values:
+
+\[
+W_{M1} = W_{M2} : 17.56\mu m \rightarrow 29.852\mu m
+\]
+
+\[
+W_{M5} : 101.5\mu m \rightarrow 195.85\mu m
+\]
+
+This adjustment ensures accurate biasing under non-ideal MOSFET effects.
+
+---
+
+## DC Analysis
+
+![Circuit 1](Results/exp4b_dc.png)
+
+The DC operating point confirms that the output voltage and source voltage is near the designed bias value, ensuring proper saturation operation.
+
+---
+
