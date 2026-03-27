@@ -159,7 +159,13 @@ Since $1.8mW \leq 1.8mW$, the power constraint is satisfied.
 
 ### 1.2.b Drain Current Calculation
 
-In a balanced differential amplifier, the tail current splits equally between both transistors:
+Under balanced input conditions:
+
+$$
+V_{in1} = V_{in2}
+$$
+
+the differential pair operates symmetrically, and the tail current splits equally between both transistors.
 
 $$
 I_{D1} = I_{D2} = \frac{I_{SS}}{2}
@@ -174,6 +180,8 @@ $$
 $$
 I_{D1} = I_{D2} = 0.5mA
 $$
+
+Thus, each transistor carries equal current under zero differential input.
 
 ##
 
@@ -1111,8 +1119,7 @@ Thus, the circuit performs differential amplification using current steering and
 
 ---
 
-### 1.2.a Power Constraint
-
+### 2.2.a Power Constraint
 
 The total power consumed by the differential amplifier is given by:
 
@@ -1126,14 +1133,10 @@ $$
 V_{DD} - V_{SS} = 0.9 - (-0.9) = 1.8V
 $$
 
-Since the maximum allowed power is 1.8mW,
+Given the maximum allowed power:
 
 $$
 P \leq 1.8 \times 10^{-3}
-$$
-
-$$
-(V_{DD} - V_{SS}) \cdot I_{SS} \leq 1.8 \times 10^{-3}
 $$
 
 $$
@@ -1144,18 +1147,283 @@ $$
 I_{SS} \leq 1mA
 $$
 
-To fully utilize the available power budget, we choose:
+To maximize transconductance and improve gain while staying within the power limit, the tail current is chosen as:
 
 $$
 I_{SS} = 1mA
 $$
 
-Power dissipated:
+The corresponding power dissipation is:
 
 $$
 P = 1.8 \times 1mA = 1.8mW
 $$
 
-Since $1.8mW \leq 1.8mW$, the power constraint is satisfied.
+Thus, the design satisfies the power constraint.
+
+The tail current is provided by the NMOS transistor M5, which acts as a current source for the differential pair.
 
 ##
+
+### 2.2.b Drain Current Calculation
+
+Under balanced input conditions:
+
+$$
+V_{in1} = V_{in2}
+$$
+
+the differential pair operates symmetrically, and the tail current splits equally between both transistors.
+
+$$
+I_{D1} = I_{D2} = \frac{I_{SS}}{2}
+$$
+
+Substituting:
+
+$$
+I_{D1} = I_{D2} = \frac{1mA}{2}
+$$
+
+$$
+I_{D1} = I_{D2} = 0.5mA
+$$
+
+Thus, each transistor carries equal current under zero differential input.
+
+##
+
+### 2.2.c Bias Point Calculation
+
+#### NMOS Differential Pair (M1 and M2)
+
+Given:
+
+$$
+V_{in,CM} = 0V
+$$
+
+So,
+
+$$
+V_{G1} = V_{G2} = 0V
+$$
+
+#### Source Node Voltage
+
+From specifications:
+
+$$
+V_p = V_S = -0.7V
+$$
+
+#### Gate-Source Voltage
+
+$$
+V_{GS} = V_G - V_S
+$$
+
+$$
+V_{GS} = 0 - (-0.7)
+$$
+
+$$
+V_{GS} = 0.7V
+$$
+
+#### Overdrive Voltage
+
+$$
+V_{OV} = V_{GS} - V_T
+$$
+
+$$
+V_{OV} = 0.7 - 0.36
+$$
+
+$$
+V_{OV} = 0.34V
+$$
+
+#### Drain Voltage
+
+Given:
+
+$$
+V_{O,CM} = 0V
+$$
+
+So,
+
+$$
+V_D = 0V
+$$
+
+#### Drain-Source Voltage
+
+$$
+V_{DS} = V_D - V_S
+$$
+
+$$
+V_{DS} = 0 - (-0.7)
+$$
+
+$$
+V_{DS} = 0.7V
+$$
+
+#### Saturation Condition
+
+$$
+V_{DS} > V_{OV}
+$$
+
+$$
+0.7 > 0.34
+$$
+
+Thus, M1 and M2 operate in saturation.
+
+##
+
+### NMOS Current Source (M5)
+
+For M5:
+
+- Source is connected to:
+
+$$
+V_S = V_{SS} = -0.9V
+$$
+
+- Drain is connected to:
+
+$$
+V_D = V_p = -0.7V
+$$
+
+#### Drain-Source Voltage
+
+$$
+V_{DS} = V_D - V_S
+$$
+
+$$
+V_{DS} = -0.7 - (-0.9)
+$$
+
+$$
+V_{DS} = 0.2V
+$$
+
+#### Saturation Condition
+
+For saturation:
+
+$$
+V_{DS} \ge V_{OV}
+$$
+
+Thus,
+
+$$
+0.2V \ge V_{OV}
+$$
+
+#### Choosing Overdrive Voltage
+
+To ensure M5 remains in saturation while maximizing current, the overdrive voltage is chosen close to the upper limit:
+
+$$
+V_{OV} \approx 0.2V
+$$
+
+#### Gate-Source Voltage
+
+$$
+V_{GS} = V_T + V_{OV5}
+$$
+
+$$
+V_{GS} = 0.36 + 0.2
+$$
+
+$$
+V_{GS} = 0.56V
+$$
+
+#### Gate Voltage
+
+$$
+V_{G} = V_S + V_{GS}
+$$
+
+$$
+V_{G} = -0.9 + 0.56
+$$
+
+$$
+V_{G} = -0.34V
+$$
+
+#### Saturation Check
+
+$$
+V_{DS} \ge V_{OV}
+$$
+
+$$
+0.2 \ge 0.2
+$$
+
+Thus, M5 operates at the edge of saturation and provides the required tail current.
+
+##
+
+### PMOS Active Load (M3 and M4)
+
+For PMOS:
+
+- Source is connected to:
+
+$$
+V_{DD} = 0.9V
+$$
+
+- Drain is at:
+
+$$
+V_D = 0V
+$$
+
+#### Source-Drain Voltage
+
+$$
+V_{SD} = V_{DD} - V_D
+$$
+
+$$
+V_{SD} = 0.9 - 0
+$$
+
+$$
+V_{SD} = 0.9V
+$$
+
+#### Saturation Condition
+
+$$
+V_{SD} > V_{OV}
+$$
+
+$$
+0.9V > V_{OV}
+$$
+
+Since $0.9V$ is sufficiently large, both PMOS transistors operate in saturation.
+
+### Final Bias Point Summary
+
+All transistors (M1, M2, M3, M4, and M5) operate in saturation, ensuring proper differential amplifier operation.
+
