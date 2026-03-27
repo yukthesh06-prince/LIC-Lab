@@ -1100,7 +1100,7 @@ Thus, the circuit performs differential amplification using current steering and
 
 ## Circuit Diagram
 
-![Circuit 1](Results/_circuit.png)
+![Circuit 1](Results/exp4b_circuit.png)
 
 ## 2.2 Design Calculations
 
