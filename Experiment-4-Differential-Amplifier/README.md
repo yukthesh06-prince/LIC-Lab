@@ -1061,5 +1061,101 @@ Hence, the designed differential amplifier satisfies the required specifications
 
 ---
 
-## Circuit 2: Differential Amplifier with Resistive Load
+## Circuit 2: Differential Amplifier with PMOS active load and an NMOS current source
 
+## 2.1 Working Principle
+
+The circuit consists of two matched NMOS transistors (M1 and M2) forming a differential pair, with their sources connected to an NMOS transistor (M5) acting as a current source, and their drains connected to a PMOS current mirror load (M3 and M4).
+
+When a differential input is applied:
+
+$$
+v_{id} = v_{in1} - v_{in2}
+$$
+
+the tail current ($I_{SS}$), set by transistor M5, is steered between M1 and M2 depending on the input difference.
+
+- If $v_{in1} > v_{in2}$, transistor M1 conducts more current while M2 conducts less.  
+- If $v_{in2} > v_{in1}$, transistor M2 conducts more current while M1 conducts less.  
+
+The PMOS transistors (M3 and M4) form a current mirror load. Transistor M3 is diode-connected and sets the reference current, while M4 mirrors this current to the other branch. This active load provides a high output resistance compared to resistive loads.
+
+The change in drain current through M1 and M2 results in corresponding voltage variations at the output nodes (OUT1 and OUT2), producing differential output voltages.
+
+The NMOS transistor M5 operates in saturation and provides a nearly constant tail current. However, due to its finite output resistance, it introduces a source degeneration effect, which slightly reduces the overall gain.
+
+For small differential input signals, all transistors operate in saturation, and the amplifier behaves linearly, producing an amplified output proportional to the input difference.
+
+For larger differential inputs, one transistor may turn OFF while the other carries most of the current, resulting in non-linear behavior.
+
+Thus, the circuit performs differential amplification using current steering and a PMOS active load, achieving higher gain compared to a resistive load differential amplifier.
+
+## Circuit Diagram
+
+![Circuit 1](Results/_circuit.png)
+
+## 2.2 Design Calculations
+
+### GIVEN PARAMETERS
+
+- Technology: TSMC 180nm 
+- Supply voltage, $V_{DD} = +0.9V$  
+- Negative supply, $V_{SS} = -0.9V$   
+- Power constraint, $P \leq 1.8mW$
+- Channel length, $L_n = 480nm$ 
+- Input common-mode voltage, $V_{in,CM} = 0V$  
+- Output common-mode voltage, $V_{O,CM} = 0V$  
+- Tail node voltage, $V_p = -0.7V$  
+- Load capacitance, $C_L = 10pF$   
+- Threshold voltage, $V_T \approx 0.36V$  
+
+---
+
+### 1.2.a Power Constraint
+
+
+The total power consumed by the differential amplifier is given by:
+
+$$
+P = (V_{DD} - V_{SS}) \cdot I_{SS}
+$$
+
+Total supply voltage:
+
+$$
+V_{DD} - V_{SS} = 0.9 - (-0.9) = 1.8V
+$$
+
+Since the maximum allowed power is 1.8mW,
+
+$$
+P \leq 1.8 \times 10^{-3}
+$$
+
+$$
+(V_{DD} - V_{SS}) \cdot I_{SS} \leq 1.8 \times 10^{-3}
+$$
+
+$$
+1.8 \cdot I_{SS} \leq 1.8 \times 10^{-3}
+$$
+
+$$
+I_{SS} \leq 1mA
+$$
+
+To fully utilize the available power budget, we choose:
+
+$$
+I_{SS} = 1mA
+$$
+
+Power dissipated:
+
+$$
+P = 1.8 \times 1mA = 1.8mW
+$$
+
+Since $1.8mW \leq 1.8mW$, the power constraint is satisfied.
+
+##
