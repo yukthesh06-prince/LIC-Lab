@@ -3184,3 +3184,224 @@ $$
 the circuit exhibits non-linear behavior due to current steering and transistor cutoff.
 
 ##
+
+## Theoretical and Simulated Gain
+
+![Circuit 4](Results/exp4b_transient1.png)
+
+The output waveform is amplified and inverted.
+
+### Simulated Gain
+
+Input signal parameters:
+
+- Type: Sine wave  
+- Frequency = 1kHz  
+- Amplitude = 10mV (applied differentially) 
+- DC Offset = 0V
+
+Measured peak-to-peak values:
+
+$$
+V_{in(p-p)} = 5mV - ( - 5mV ) = 10mV
+$$
+
+$$
+V_{out(p-p)} = 131mV - ( - 254mV ) = 385mV
+$$
+
+Voltage gain:
+
+$$
+A_v = \frac{V_{out(p-p)}}{V_{in(p-p)}}
+$$
+
+$$
+A_v = \frac{385 \times 10^{-3}}{10 \times 10^{-3}}
+$$
+
+$$
+A_v = 38.5
+$$
+
+Gain in dB:
+
+$$
+A_v(dB) = 20\log_{10}(38.5)
+$$
+
+$$
+A_v(dB) = 31.7dB
+$$
+
+##
+
+### Theoretical Gain
+
+### Assumptions
+
+$$
+\lambda_n = \lambda_p = 0.1 \, V^{-1}
+$$
+
+$$
+I_D = 0.54mA = 0.54 \times 10^{-3}A
+$$
+
+### Output Resistance
+
+$$
+r_o = \frac{1}{\lambda I_D}
+$$
+
+$$
+r_o = \frac{1}{0.1 \times 0.54 \times 10^{-3}}
+$$
+
+$$
+r_o \approx 18.5k\Omega
+$$
+
+### Effective Output Resistance
+
+$$
+r_{o,eff} = r_{o_n} \parallel r_{o_p}
+$$
+
+$$
+r_{o,eff} = 18.5k \parallel 18.5k
+$$
+
+$$
+r_{o,eff} \approx 9.25k\Omega
+$$
+
+### Transconductance
+
+$$
+g_m = \frac{2 I_D}{V_{OV}}
+$$
+
+$$
+V_{OV} = 0.34V
+$$
+
+$$
+g_m = \frac{2 \times 0.54 \times 10^{-3}}{0.34}
+$$
+
+$$
+g_m \approx 3.18mS
+$$
+
+### Voltage Gain
+
+$$
+A_v = g_m R_{out}
+$$
+
+$$
+A_v = 3.18 \times 10^{-3} \times 9.25 \times 10^3
+$$
+
+$$
+A_v \approx 29.4
+$$
+
+### Gain in dB
+
+$$
+A_v(dB) = 20 \log_{10}(29.4)
+$$
+
+$$
+A_v(dB) \approx 29.36dB
+$$
+
+##
+
+## Reason for Difference Between Theoretical and Simulated Gain
+
+A deviation is observed between the theoretical and simulated gain values in Circuit 3. This difference arises due to simplifying assumptions in analytical calculations and the inclusion of non-ideal MOSFET effects in simulation.
+
+### Reasons for Deviation
+
+### 1. Channel Length Modulation
+
+In theoretical calculations, a constant value of $\lambda$ is assumed.  
+However, in simulation, $\lambda$ varies with bias conditions for both NMOS and PMOS transistors, affecting the output resistance:
+
+$$
+r_o = \frac{1}{\lambda I_D}
+$$
+
+This variation directly impacts the gain.
+
+### 2. PMOS Active Load Behavior
+
+In Circuit 3, PMOS transistors (M3 and M4) act as active loads.
+
+The effective output resistance is:
+
+$$
+R_{out} = r_{o_n} \parallel r_{o_p}
+$$
+
+Any mismatch or variation in these resistances alters the gain significantly.
+
+### 3. Current Mirror Effect of PMOS Load
+
+The PMOS active load behaves similar to a current mirror, increasing the effective output resistance beyond the simple parallel combination.
+
+This results in higher simulated gain compared to theoretical estimation.
+
+### 4. Non-Ideal Tail Current Source (M5)
+
+The NMOS current source (M5) is not ideal in simulation.
+
+- Finite output resistance  
+- Slight variation in tail current  
+
+This affects current distribution in the differential pair and impacts gain.
+
+### 5. Mobility Degradation and Short Channel Effects
+
+In practical MOSFET models, carrier mobility decreases due to high electric fields.
+
+This affects the transconductance:
+
+$$
+g_m = \frac{2I_D}{V_{OV}}
+$$
+
+leading to deviation in gain.
+
+### 6. Biasing Imperfections
+
+The output waveform is not perfectly centered (DC offset present), indicating slight bias mismatch.
+
+This affects the effective small-signal gain and causes deviation from theoretical values.
+
+### 7. Parasitic Capacitances
+
+Simulation includes intrinsic parasitic capacitances of MOSFETs.
+
+These capacitances affect signal behavior and reduce gain slightly, especially at higher frequencies.
+
+### 8. Measurement Method
+
+Gain is measured using peak-to-peak values from a single-ended output waveform.
+
+Minor inaccuracies may arise due to:
+
+- Cursor placement  
+- Waveform asymmetry  
+- Offset in output signal  
+
+### Conclusion
+
+Thus, the difference between theoretical and simulated gain is expected.  
+It arises due to simplified assumptions in analytical calculations and the inclusion of realistic device behavior, current mirror effects, and non-idealities in simulation.
+
+---
+
