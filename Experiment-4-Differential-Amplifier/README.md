@@ -2645,3 +2645,141 @@ All transistors (M1, M2, M3, M4, and M5) operate in saturation, ensuring proper 
 
 ##
 
+### 3.2.d Width Calculation
+
+The drain current in saturation is given by:
+
+$$
+I_D = \frac{1}{2} \mu C_{ox} \frac{W}{L} (V_{OV})^2
+$$
+
+Rearranging:
+
+$$
+W = \frac{2 I_D L}{\mu C_{ox} (V_{OV})^2}
+$$
+
+---
+
+### NMOS Differential Pair (M1 and M2)
+
+From previous calculation:
+
+$$
+I_D = \frac{I_{SS}}{2} = 0.5mA
+$$
+
+$$
+L = 480nm = 480 \times 10^{-9}m
+$$
+
+$$
+\mu_n C_{ox} = 2.365 \times 10^{-4} A/V^2
+$$
+
+$$
+V_{OV} = 0.34V
+$$
+
+#### Calculation
+
+$$
+W = \frac{2 \times 0.5 \times 10^{-3} \times 480 \times 10^{-9}}{2.365 \times 10^{-4} \times (0.34)^2}
+$$
+
+$$
+W = \frac{480 \times 10^{-12}}{2.734 \times 10^{-5}}
+$$
+
+$$
+W \approx 17.56 \mu m
+$$
+
+##
+
+### NMOS Current Source (M5)
+
+Using:
+
+$$
+I_D = 1mA
+$$
+
+$$
+V_{OV5} = 0.2V
+$$
+
+#### Calculation
+
+$$
+W_5 = \frac{2 \times 1 \times 10^{-3} \times 480 \times 10^{-9}}{2.365 \times 10^{-4} \times (0.2)^2}
+$$
+
+$$
+W_5 = \frac{960 \times 10^{-12}}{9.46 \times 10^{-6}}
+$$
+
+$$
+W_5 \approx 101.5 \mu m
+$$
+
+##
+
+### PMOS Active Load (M3 and M4)
+
+Given:
+
+$$
+\mu_p C_{ox} = 9.98 \times 10^{-5} A/V^2
+$$
+
+Using:
+
+$$
+I_D = 0.5mA
+$$
+
+$$
+V_{OV(p)} = 0.25V
+$$
+
+#### Calculation
+
+$$
+W_p = \frac{2 \times 0.5 \times 10^{-3} \times 480 \times 10^{-9}}{9.98 \times 10^{-5} \times (0.25)^2}
+$$
+
+$$
+W_p = \frac{480 \times 10^{-12}}{9.98 \times 10^{-5} \times 0.0625}
+$$
+
+$$
+W_p = \frac{480 \times 10^{-12}}{6.2375 \times 10^{-6}}
+$$
+
+$$
+W_p \approx 76.95 \mu m
+$$
+
+---
+
+### Final Width Values
+
+$$
+W_1 = W_2 \approx 17.56 \mu m
+$$
+
+$$
+W_5 \approx 101.5 \mu m
+$$
+
+$$
+W_3 = W_4 \approx 76.95 \mu m
+$$
+
+---
+
+### Note
+
+The calculated widths provide an initial design. In simulation, slight adjustments may be required to achieve the exact bias point due to second-order effects such as channel length modulation and mobility degradation.
+
