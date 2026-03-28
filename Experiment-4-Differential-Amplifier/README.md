@@ -2695,6 +2695,10 @@ $$
 W \approx 17.56 \mu m
 $$
 
+$$
+W_1 = W_2 \approx 17.56 \mu m
+$$
+
 ##
 
 ### NMOS Current Source (M5)
@@ -2761,25 +2765,11 @@ $$
 W_p \approx 76.95 \mu m
 $$
 
----
-
-### Final Width Values
-
-$$
-W_1 = W_2 \approx 17.56 \mu m
-$$
-
-$$
-W_5 \approx 101.5 \mu m
-$$
-
 $$
 W_3 = W_4 \approx 76.95 \mu m
 $$
 
----
+##
 
-### Note
 
-The calculated widths provide an initial design. In simulation, slight adjustments may be required to achieve the exact bias point due to second-order effects such as channel length modulation and mobility degradation.
 
