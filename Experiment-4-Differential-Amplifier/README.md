@@ -2282,7 +2282,7 @@ Thus, the circuit converts a differential input voltage into a single-ended ampl
 
 ## Circuit Diagram
 
-![Circuit 1](Results/exp4c_circuit.png)
+
 
 ## 2.2 Design Calculations
 
