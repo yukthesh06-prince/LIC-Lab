@@ -2250,3 +2250,398 @@ From AC analysis, the amplifier shows a flat midband gain followed by a roll-off
 The differential amplifier provides linear amplification for small differential inputs. However, for large input signals, current steering causes one transistor to turn OFF, leading to distortion and non-linear behavior.
 
 Hence, the designed differential amplifier demonstrates correct biasing and operation, but highlights the impact of non-ideal device behavior on gain when using active loads and current sources.
+
+---
+
+## Circuit 3: CMOS Differential Amplifier with PMOS Active Load (Bias-Controlled Load)
+
+## Working Principle
+
+The circuit consists of two matched NMOS transistors (M1 and M2) forming a differential pair, with their sources connected together and biased by a constant tail current source (M5). The drains of M1 and M2 are connected to PMOS transistors (M3 and M4), which act as active loads.
+
+The gates of the PMOS transistors are connected to a bias voltage $V_{b2}$, which controls their operation and ensures they function as current sources rather than forming a current mirror.
+
+When a differential input is applied:
+
+$$
+v_{id} = v_{in1} - v_{in2}
+$$
+
+the tail current $I_{SS}$ is steered between M1 and M2 depending on the input difference.
+
+- If $v_{in1} > v_{in2}$, transistor M1 conducts more current while M2 conducts less.  
+- If $v_{in2} > v_{in1}$, transistor M2 conducts more current while M1 conducts less.  
+
+The PMOS active load converts these current variations into voltage changes at the output nodes. Since the PMOS transistors are biased by $V_{b2}$, they provide high output resistance, which increases the voltage gain of the amplifier.
+
+The output is typically taken from one side (single-ended output), resulting in an amplified version of the differential input signal.
+
+For small differential inputs, both NMOS transistors operate in saturation, and the circuit behaves as a linear amplifier. For larger inputs, one transistor may enter cutoff while the other carries most of the current, leading to non-linear behavior.
+
+Thus, the circuit converts a differential input voltage into a single-ended amplified output using a differential pair and PMOS active loads, providing higher gain compared to resistive or current mirror loaded configurations.
+
+## Circuit Diagram
+
+![Circuit 1](Results/exp4c_circuit.png)
+
+## 2.2 Design Calculations
+
+### GIVEN PARAMETERS
+
+- Technology: TSMC 180nm 
+- Supply voltage, $V_{DD} = +0.9V$  
+- Negative supply, $V_{SS} = -0.9V$   
+- Power constraint, $P \leq 1.8mW$
+- Channel length, $L_n = 480nm$ 
+- Input common-mode voltage, $V_{in,CM} = 0V$  
+- Output common-mode voltage, $V_{O,CM} = 0V$  
+- Tail node voltage, $V_p = -0.7V$  
+- Load capacitance, $C_L = 10pF$   
+- Threshold voltage, $V_T \approx 0.36V$  
+
+---
+
+### 3.2.a Power Constraint
+
+The total power consumed by the differential amplifier is given by:
+
+$$
+P = (V_{DD} - V_{SS}) \cdot I_{SS}
+$$
+
+Total supply voltage:
+
+$$
+V_{DD} - V_{SS} = 0.9 - (-0.9) = 1.8V
+$$
+
+Given the maximum allowed power:
+
+$$
+P \leq 1.8 \times 10^{-3}
+$$
+
+$$
+1.8 \cdot I_{SS} \leq 1.8 \times 10^{-3}
+$$
+
+$$
+I_{SS} \leq 1mA
+$$
+
+To maximize transconductance and improve gain while staying within the power limit, the tail current is chosen as:
+
+$$
+I_{SS} = 1mA
+$$
+
+The corresponding power dissipation is:
+
+$$
+P = 1.8 \times 1mA = 1.8mW
+$$
+
+Thus, the design satisfies the power constraint.
+
+The tail current is provided by the NMOS transistor M5, which acts as a current source for the differential pair.
+
+##
+
+### 3.2.b Drain Current Calculation
+
+Under balanced input conditions:
+
+$$
+V_{in1} = V_{in2}
+$$
+
+the differential pair operates symmetrically, and the tail current splits equally between both transistors.
+
+$$
+I_{D1} = I_{D2} = \frac{I_{SS}}{2}
+$$
+
+Substituting:
+
+$$
+I_{D1} = I_{D2} = \frac{1mA}{2}
+$$
+
+$$
+I_{D1} = I_{D2} = 0.5mA
+$$
+
+Thus, each transistor carries equal current under zero differential input.
+
+##
+
+### 3.2.c Bias Point Calculation
+
+#### NMOS Differential Pair (M1 and M2)
+
+Given:
+
+$$
+V_{in,CM} = 0V
+$$
+
+So,
+
+$$
+V_{G1} = V_{G2} = 0V
+$$
+
+#### Source Node Voltage
+
+From specifications:
+
+$$
+V_p = V_S = -0.7V
+$$
+
+#### Gate-Source Voltage
+
+$$
+V_{GS} = V_G - V_S
+$$
+
+$$
+V_{GS} = 0 - (-0.7)
+$$
+
+$$
+V_{GS} = 0.7V
+$$
+
+#### Overdrive Voltage
+
+$$
+V_{OV} = V_{GS} - V_T
+$$
+
+$$
+V_{OV} = 0.7 - 0.36
+$$
+
+$$
+V_{OV} = 0.34V
+$$
+
+#### Drain Voltage
+
+Given:
+
+$$
+V_{O,CM} = 0V
+$$
+
+So,
+
+$$
+V_D = 0V
+$$
+
+#### Drain-Source Voltage
+
+$$
+V_{DS} = V_D - V_S
+$$
+
+$$
+V_{DS} = 0 - (-0.7)
+$$
+
+$$
+V_{DS} = 0.7V
+$$
+
+#### Saturation Condition
+
+$$
+V_{DS} > V_{OV}
+$$
+
+$$
+0.7 > 0.34
+$$
+
+Thus, M1 and M2 operate in saturation.
+
+##
+
+### NMOS Current Source (M5)
+
+For M5:
+
+- Source is connected to:
+
+$$
+V_S = V_{SS} = -0.9V
+$$
+
+- Drain is connected to:
+
+$$
+V_D = V_p = -0.7V
+$$
+
+#### Drain-Source Voltage
+
+$$
+V_{DS} = V_D - V_S
+$$
+
+$$
+V_{DS} = -0.7 - (-0.9)
+$$
+
+$$
+V_{DS} = 0.2V
+$$
+
+#### Saturation Condition
+
+$$
+V_{DS} \ge V_{OV}
+$$
+
+To ensure saturation, choose:
+
+$$
+V_{OV} \approx 0.2V
+$$
+
+#### Gate-Source Voltage
+
+$$
+V_{GS} = V_T + V_{OV}
+$$
+
+$$
+V_{GS} = 0.36 + 0.2
+$$
+
+$$
+V_{GS} = 0.56V
+$$
+
+#### Gate Voltage
+
+$$
+V_{G} = V_S + V_{GS}
+$$
+
+$$
+V_{G} = -0.9 + 0.56
+$$
+
+$$
+V_{G} = -0.34V
+$$
+
+#### Saturation Check
+
+$$
+0.2 \ge 0.2
+$$
+
+Thus, M5 operates at the edge of saturation and provides the required tail current.
+
+##
+
+### PMOS Active Load (M3 and M4)
+
+For PMOS:
+
+- Source is connected to:
+
+$$
+V_S = V_{DD} = 0.9V
+$$
+
+- Gate is connected to bias voltage:
+
+$$
+V_G = V_{b2}
+$$
+
+#### Choosing Overdrive Voltage
+
+Assume:
+
+$$
+V_{OV(p)} \approx 0.25V
+$$
+
+Threshold voltage:
+
+$$
+|V_T| \approx 0.39V
+$$
+
+#### Source-Gate Voltage
+
+$$
+V_{SG} = |V_T| + V_{OV(p)}
+$$
+
+$$
+V_{SG} = 0.39 + 0.25
+$$
+
+$$
+V_{SG} = 0.64V
+$$
+
+#### Gate Voltage
+
+$$
+V_G = V_S - V_{SG}
+$$
+
+$$
+V_G = 0.9 - 0.64
+$$
+
+$$
+V_G \approx 0.26V
+$$
+
+Thus,
+
+$$
+V_{b2} \approx 0.26V
+$$
+
+#### Source-Drain Voltage
+
+$$
+V_{SD} = V_S - V_D
+$$
+
+$$
+V_{SD} = 0.9 - 0
+$$
+
+$$
+V_{SD} = 0.9V
+$$
+
+#### Saturation Condition
+
+$$
+V_{SD} > V_{OV(p)}
+$$
+
+$$
+0.9 > 0.25
+$$
+
+Thus, M3 and M4 operate in saturation.
+
+### Final Bias Point Summary
+
+All transistors (M1, M2, M3, M4, and M5) operate in saturation, ensuring proper differential amplifier operation with PMOS active load.
+
+##
+
