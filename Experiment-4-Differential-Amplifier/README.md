@@ -3551,3 +3551,97 @@ From AC analysis, the amplifier exhibits a flat midband gain followed by a roll-
 The differential amplifier provides linear amplification for small differential input signals. For larger inputs, current steering causes one transistor to dominate, leading to distortion and non-linear operation.
 
 Hence, the designed differential amplifier demonstrates proper biasing, expected gain behavior, and highlights the impact of active loads and non-ideal device characteristics on amplifier performance.
+
+---
+
+---
+
+# Comparison of Differential Amplifier Circuits (1, 2, 3)
+
+| Parameter | Circuit 1 | Circuit 2 | Circuit 3 |
+|------------|-----------|-----------|-----------|
+| Load Type | Resistive Load ($R_D$) | Resistive Load | PMOS Active Load |
+| Tail Element | Ideal Current Source | NMOS Current Source (M5) | NMOS Current Source (M5) |
+| Supply Voltage | ±0.9V | ±0.9V | ±0.9V |
+| Tail Current ($I_{SS}$) | 1 mA | 1 mA | 1 mA |
+| Current per Branch | 0.5 mA | 0.5 mA | 0.5 mA |
+| Theoretical Gain (V/V) | 4.5 | 5.29 | 29.4 |
+| Simulated Gain (V/V) | 6.04 | 1.81 | 38.5 |
+| Gain (dB) | 15.62 dB | 5.13 dB | 31.7 dB |
+| Output Resistance | Moderate | Low | High |
+| Linearity | Good | Poor | Good |
+| Degeneration Effect | Low | High | Moderate |
+
+---
+
+# Final Combined Conclusion – Experiment 4
+
+In Experiment 4, three differential amplifier configurations were designed and analyzed under the following constraints:
+
+- $V_{DD} = +0.9V$, $V_{SS} = -0.9V$  
+- Power ≤ 1.8mW  
+- $V_{OCM} = 0V$  
+- $I_{SS} = 1mA$  
+
+All circuits were biased such that transistors operated in saturation under balanced conditions.
+
+---
+
+### Key Observations
+
+**Circuit 1 (Resistive Load Differential Amplifier):**  
+This configuration provides stable and predictable performance with moderate gain. The resistive load limits output resistance, resulting in moderate amplification but good linearity.
+
+**Circuit 2 (Differential Amplifier with NMOS Current Source):**  
+The NMOS current source introduces strong degeneration due to its finite output resistance. This significantly reduces gain in simulation compared to theoretical expectations, making it the lowest gain configuration.
+
+**Circuit 3 (Differential Amplifier with PMOS Active Load):**  
+This configuration achieves the highest gain due to the use of PMOS active load, which increases effective output resistance. The current mirror behavior further enhances gain, making it the most efficient configuration.
+
+---
+
+### Gain Trend
+
+The observed gain relationship is:
+
+$$
+A_v(Circuit\ 3) > A_v(Circuit\ 1) > A_v(Circuit\ 2)
+$$
+
+Circuit 3 provides the highest gain, while Circuit 2 gives the lowest due to strong degeneration.
+
+---
+
+### Frequency Behavior
+
+- Circuit 3 exhibits better gain-bandwidth performance due to high output resistance.  
+- Circuit 2 shows reduced performance due to degeneration.  
+- Circuit 1 shows moderate behavior.  
+
+The dominant pole in all circuits is mainly due to load capacitance ($C_L$) and intrinsic parasitic capacitances.
+
+---
+
+### Deviation Between Theoretical and Simulated Results
+
+Differences between theoretical and simulated results arise due to:
+
+- Finite output resistance of MOSFETs  
+- Channel length modulation  
+- Mobility degradation  
+- Non-ideal current source behavior  
+- Parasitic capacitances  
+
+Additionally, in Circuit 3, the PMOS active load behaves like a current mirror, increasing effective gain beyond simple theoretical estimation.
+
+---
+
+## Overall Conclusion
+
+Experiment 4 demonstrates the impact of load type and biasing method on differential amplifier performance:
+
+- Resistive loads provide stable operation with moderate gain.  
+- NMOS current sources improve bias control but introduce strong degeneration, reducing gain.  
+- PMOS active loads significantly enhance gain by increasing output resistance and enabling current mirror action.  
+
+Thus, the choice of load and biasing technique plays a crucial role in determining gain, linearity, and overall amplifier performance in CMOS differential amplifiers.
