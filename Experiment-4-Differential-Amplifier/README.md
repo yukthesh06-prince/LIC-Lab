@@ -2820,6 +2820,367 @@ This adjustment ensures accurate biasing under non-ideal MOSFET effects.
 
 The DC operating point confirms that the output voltage and source voltage is near the designed bias value, ensuring proper saturation operation.
 
+---
 
+### 3.2.e Input Common Mode Range (ICMR)
 
+The input common-mode range is defined as the range of input voltage for which all transistors remain in saturation.
 
+### Minimum Input Common Mode Voltage
+
+For proper operation, the NMOS input transistors (M1 and M2) must remain ON and the tail current source (M5) must remain in saturation.
+
+Condition:
+
+$$
+V_{GS1} \ge V_T
+$$
+
+Using:
+
+$$
+V_{GS1} = V_{ICM} - V_S
+$$
+
+So,
+
+$$
+V_{ICM(min)} = V_S + V_T
+$$
+
+Substituting:
+
+$$
+V_S = -0.7V, \quad V_T = 0.36V
+$$
+
+$$
+V_{ICM(min)} = -0.7 + 0.36
+$$
+
+$$
+V_{ICM(min)} = -0.34V
+$$
+
+##
+
+### Maximum Input Common Mode Voltage
+
+For maximum input voltage, the NMOS input transistors (M1 and M2) must remain in saturation.
+
+Condition:
+
+$$
+V_{DS1} \ge V_{OV}
+$$
+
+Using:
+
+$$
+V_{DS1} = V_D - V_S
+$$
+
+At the edge of saturation:
+
+$$
+V_D - V_S = V_{OV}
+$$
+
+Also,
+
+$$
+V_D \approx V_{out,CM} \approx 0V
+$$
+
+So,
+
+$$
+0 - (-0.7) = V_{OV}
+$$
+
+$$
+0.7 = V_{OV}
+$$
+
+But,
+
+$$
+V_{OV} = V_{GS} - V_T
+$$
+
+$$
+V_{GS} = V_{ICM} - V_S
+$$
+
+So,
+
+$$
+V_{OV} = (V_{ICM} - V_S) - V_T
+$$
+
+Substituting:
+
+$$
+0.7 = (V_{ICM} + 0.7) - 0.36
+$$
+
+$$
+0.7 = V_{ICM} + 0.34
+$$
+
+$$
+V_{ICM(max)} = 0.36V
+$$
+
+### Final Input Common Mode Range
+
+$$
+-0.34V \le V_{ICM} \le 0.36V
+$$
+
+##
+
+### 3.2.f Output Common Mode Range (OCMR)
+
+The output common-mode range is defined as the range of output voltage for which all transistors remain in saturation.
+
+### Minimum Output Common Mode Voltage
+
+For minimum output voltage, the NMOS input transistors (M1 and M2) must remain in saturation.
+
+Condition:
+
+$$
+V_{DS1} \ge V_{OV}
+$$
+
+Using:
+
+$$
+V_{DS1} = V_{out} - V_S
+$$
+
+So,
+
+$$
+V_{out(min)} - V_S \ge V_{OV}
+$$
+
+$$
+V_{out(min)} \ge V_S + V_{OV}
+$$
+
+Substituting:
+
+$$
+V_S = -0.7V, \quad V_{OV} = 0.34V
+$$
+
+$$
+V_{out(min)} = -0.7 + 0.34
+$$
+
+$$
+V_{out(min)} = -0.36V
+$$
+
+##
+
+### Maximum Output Common Mode Voltage
+
+For maximum output voltage, the PMOS load transistors (M3 and M4) must remain in saturation.
+
+Condition:
+
+$$
+V_{SD} \ge V_{SG} - |V_T|
+$$
+
+Using:
+
+$$
+V_{SD} = V_{DD} - V_{out}
+$$
+
+Also,
+
+$$
+V_{SG} = V_{DD} - V_{b2}
+$$
+
+So,
+
+$$
+V_{DD} - V_{out(max)} \ge (V_{DD} - V_{b2}) - |V_T|
+$$
+
+Rearranging:
+
+$$
+V_{out(max)} \le V_{b2} + |V_T|
+$$
+
+Substituting:
+
+$$
+V_{b2} = -0.36V, \quad |V_T| = 0.39V
+$$
+
+$$
+V_{out(max)} = -0.36 + 0.39
+$$
+
+$$
+V_{out(max)} = 0.03V
+$$
+
+### Final Output Common Mode Range
+
+$$
+-0.36V \le V_{out} \le 0.03V
+$$
+
+##
+
+### 3.2.g Differential Input Voltage Range (Linear Region)
+
+The differential amplifier operates in the linear region as long as both transistors (M1 and M2) remain in saturation and conduct current.
+
+The differential input voltage is defined as:
+
+$$
+v_{id} = v_{in1} - v_{in2}
+$$
+
+### Condition for Linear Operation
+
+For linear operation:
+
+- Both transistors must remain ON  
+- Tail current must be shared between M1 and M2  
+
+The maximum differential input occurs when one transistor starts to turn OFF.
+
+### Maximum Differential Input Voltage
+
+At the boundary of linear operation:
+
+$$
+v_{id(max)} = 2V_{OV}
+$$
+
+Substituting:
+
+$$
+V_{OV} = 0.34V
+$$
+
+$$
+v_{id(max)} = 2 \times 0.34
+$$
+
+$$
+v_{id(max)} = 0.68V
+$$
+
+### Final Differential Input Range
+
+$$
+-0.68V \le v_{id} \le 0.68V
+$$
+
+---
+
+## 3.3 Transient Analysis and Linearity Observation
+
+The linear behavior of the differential amplifier with PMOS active load is verified using transient analysis.
+
+### Condition for Linearity
+
+$$
+|V_{id}| < \sqrt{2} V_{OV}
+$$
+
+Using:
+
+$$
+V_{OV} = 0.34V
+$$
+
+$$
+\sqrt{2} V_{OV} = 1.414 \times 0.34
+$$
+
+$$
+\sqrt{2} V_{OV} = 0.48V
+$$
+
+### Case 1: Linear Region
+
+Input applied:
+
+$$
+V_{id} = 10mV < 0.48V
+$$
+
+![Circuit 3](Results/exp4c_transient1.png)
+
+#### Observation:
+
+- Output waveform is sinusoidal  
+- No distortion observed  
+- Both NMOS transistors (M1, M2) operate in saturation  
+- PMOS load transistors (M3, M4) remain in saturation  
+- Amplifier behaves linearly  
+
+### Case 2: Non-Linear Region
+
+Input applied:
+
+$$
+V_{id} = 600mV > 0.48V
+$$
+
+![Circuit 3](Results/exp4c_transient2.png)
+
+#### Observation:
+
+- Output waveform shows distortion and clipping  
+- One transistor (M1 or M2) enters cutoff  
+- Current is steered completely to one branch  
+- PMOS load still operates, but amplification becomes non-linear  
+
+## Comparison Table
+
+| Parameter | Case 1: Linear Region | Case 2: Non-Linear Region |
+|----------|----------------------|--------------------------|
+| Condition | $V_{id} < \sqrt{2}V_{OV}$ | $V_{id} > \sqrt{2}V_{OV}$ |
+| Input ($V_{id}$) | 100 mV | 600 mV |
+| Output waveform | Sinusoidal | Distorted / Clipped |
+| Gain | Constant | Reduced / Non-linear |
+| Transistor operation | All in saturation | One NMOS in cutoff |
+| Current distribution | Shared between M1 & M2 | Current flows in one branch |
+
+## Interpretation
+
+In the linear region, the differential input is small and both NMOS transistors conduct simultaneously. The tail current is shared between the two branches, and the PMOS active load converts current variations into voltage, resulting in a proportional and undistorted output.
+
+In the non-linear region, the differential input exceeds the limit, causing one transistor to carry almost the entire tail current while the other turns OFF. This leads to distortion and loss of linearity in the output.
+
+## Conclusion
+
+The differential amplifier with active load operates linearly only for small input signals:
+
+$$
+|V_{id}| < \sqrt{2} V_{OV}
+$$
+
+When:
+
+$$
+|V_{id}| > \sqrt{2} V_{OV}
+$$
+
+the circuit exhibits non-linear behavior due to current steering and transistor cutoff.
+
+##
