@@ -2792,7 +2792,34 @@ $$
 W_3 = W_4 \approx 6.35 \mu m
 $$
 
-##
+### Width Adjustment
+
+To achieve the desired biasing conditions (\(V_p \approx -0.7V\) and \(I_{SS} \approx 1mA\)), the transistor widths were tuned in simulation.
+
+Updated values:
+
+$$
+W_{M1} = W_{M2} : 17.56\mu m \rightarrow 32\mu m
+$$
+
+$$
+W_{M5} : 101.5\mu m \rightarrow 209.154\mu m
+$$
+
+$$
+W_{M3} = W_{M4} : 6.35\mu m \rightarrow 13.876\mu m
+$$
+
+This adjustment ensures accurate biasing under non-ideal MOSFET effects.
+
+---
+
+## DC Analysis
+
+![Circuit 1](Results/exp4c_dc.png)
+
+The DC operating point confirms that the output voltage and source voltage is near the designed bias value, ensuring proper saturation operation.
+
 
 
 
