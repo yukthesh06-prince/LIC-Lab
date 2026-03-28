@@ -2559,58 +2559,16 @@ $$
 V_S = V_{DD} = 0.9V
 $$
 
+- Drain is at:
+
+$$
+V_D = V_{out} = 0V
+$$
+
 - Gate is connected to bias voltage:
 
 $$
 V_G = V_{b2}
-$$
-
-#### Choosing Overdrive Voltage
-
-Assume:
-
-$$
-V_{OV(p)} \approx 0.25V
-$$
-
-Threshold voltage:
-
-$$
-|V_T| \approx 0.39V
-$$
-
-#### Source-Gate Voltage
-
-$$
-V_{SG} = |V_T| + V_{OV(p)}
-$$
-
-$$
-V_{SG} = 0.39 + 0.25
-$$
-
-$$
-V_{SG} = 0.64V
-$$
-
-#### Gate Voltage
-
-$$
-V_G = V_S - V_{SG}
-$$
-
-$$
-V_G = 0.9 - 0.64
-$$
-
-$$
-V_G \approx 0.26V
-$$
-
-Thus,
-
-$$
-V_{b2} \approx 0.26V
 $$
 
 #### Source-Drain Voltage
@@ -2630,15 +2588,78 @@ $$
 #### Saturation Condition
 
 $$
+V_{SD} \ge V_{SG} - |V_T|
+$$
+
+Substituting:
+
+$$
+0.9 \ge (0.9 - V_G) - 0.39
+$$
+
+$$
+0.9 \ge 0.51 - V_G
+$$
+
+$$
+0.39 \ge -V_G
+$$
+
+$$
+V_G \ge -0.39V
+$$
+
+#### Gate Voltage Selection
+
+$$
+V_{b2(min)} = -0.39V
+$$
+
+Choose:
+
+$$
+V_{b2} \approx -0.36V
+$$
+
+#### Source-Gate Voltage
+
+$$
+V_{SG} = V_S - V_G
+$$
+
+$$
+V_{SG} = 0.9 - (-0.36)
+$$
+
+$$
+V_{SG} = 1.26V
+$$
+
+#### Overdrive Voltage
+
+$$
+V_{OV(p)} = V_{SG} - |V_T|
+$$
+
+$$
+V_{OV(p)} = 1.26 - 0.39
+$$
+
+$$
+V_{OV(p)} = 0.87V
+$$
+
+#### Saturation Check
+
+$$
 V_{SD} > V_{OV(p)}
 $$
 
 $$
-0.9 > 0.25
+0.9 > 0.87
 $$
 
 Thus, M3 and M4 operate in saturation.
-
 ### Final Bias Point Summary
 
 All transistors (M1, M2, M3, M4, and M5) operate in saturation, ensuring proper differential amplifier operation with PMOS active load.
@@ -2659,7 +2680,7 @@ $$
 W = \frac{2 I_D L}{\mu C_{ox} (V_{OV})^2}
 $$
 
----
+##
 
 ### NMOS Differential Pair (M1 and M2)
 
@@ -2734,39 +2755,41 @@ $$
 Given:
 
 $$
-\mu_p C_{ox} = 9.98 \times 10^{-5} A/V^2
-$$
-
-Using:
-
-$$
 I_D = 0.5mA
 $$
 
 $$
-V_{OV(p)} = 0.25V
-$$
-
-#### Calculation
-
-$$
-W_p = \frac{2 \times 0.5 \times 10^{-3} \times 480 \times 10^{-9}}{9.98 \times 10^{-5} \times (0.25)^2}
+L = 480nm = 480 \times 10^{-9}m
 $$
 
 $$
-W_p = \frac{480 \times 10^{-12}}{9.98 \times 10^{-5} \times 0.0625}
+\mu_p C_{ox} = 9.98 \times 10^{-5}
 $$
 
 $$
-W_p = \frac{480 \times 10^{-12}}{6.2375 \times 10^{-6}}
+V_{OV(p)} = 0.87V
+$$
+
+Substituting:
+
+$$
+W_p = \frac{2 \times 0.5 \times 10^{-3} \times 480 \times 10^{-9}}{9.98 \times 10^{-5} \times (0.87)^2}
 $$
 
 $$
-W_p \approx 76.95 \mu m
+W_p = \frac{480 \times 10^{-12}}{9.98 \times 10^{-5} \times 0.7569}
 $$
 
 $$
-W_3 = W_4 \approx 76.95 \mu m
+W_p = \frac{480 \times 10^{-12}}{7.55 \times 10^{-5}}
+$$
+
+$$
+W_p \approx 6.35 \mu m
+$$
+
+$$
+W_3 = W_4 \approx 6.35 \mu m
 $$
 
 ##
